@@ -56,10 +56,10 @@ const typeStyles = [
     sample: "Calibración de Válvulas",
   },
   {
-    className: "type-wordmark",
-    name: "Wordmark",
+    className: "type-heading-sm",
+    name: "Heading S",
     spec: "Montserrat 400 · 21 / 24 / 18px · lh 1.2 · ls -0.01em",
-    sample: "Experiencia · Continuidad",
+    sample: "Sellado de Fugas en Operación",
   },
   {
     className: "type-body",

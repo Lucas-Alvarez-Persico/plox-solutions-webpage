@@ -31,7 +31,7 @@ export function Record() {
             <ul className="flex list-none gap-8">
               {record.marqueeWords.map((word) => (
                 <li key={word} className="flex items-center gap-8">
-                  <p className="type-wordmark whitespace-nowrap text-gray">
+                  <p className="type-heading-sm whitespace-nowrap text-gray">
                     {word}
                   </p>
                   <span aria-hidden="true" className="h-[18px] w-px bg-gray/40" />

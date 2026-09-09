@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/hero";
+import { Method } from "@/components/sections/method";
 import { Record } from "@/components/sections/record";
 import { sectionIds } from "@/content/site";
 
@@ -7,7 +8,6 @@ import { sectionIds } from "@/content/site";
  * hasta que cada una se construya en su propio commit.
  */
 const placeholders = [
-  { id: sectionIds.method, label: "A-05 · Method" },
   { id: sectionIds.enquiry, label: "A-10 · Enquiry" },
 ];
 
@@ -16,6 +16,7 @@ export default function Home() {
     <>
       <Hero />
       <Record />
+      <Method />
       {placeholders.map((section) => (
         <section
           key={section.id}
