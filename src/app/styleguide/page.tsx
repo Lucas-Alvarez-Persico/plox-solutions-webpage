@@ -43,6 +43,25 @@ const typeStyles = [
       "Soluciones especializadas para intervenir, mantener y optimizar instalaciones industriales.",
   },
   {
+    className: "type-prose",
+    name: "Prose",
+    spec: "Montserrat 400 · 16 / 16 / 20px · lh 1.6 · ls -0.02em",
+    sample:
+      "Desde 1981 brindamos servicios especializados para la industria, combinando experiencia técnica y conocimiento de campo.",
+  },
+  {
+    className: "type-body-m",
+    name: "Body M",
+    spec: "Montserrat 400 · 20px · lh 1.2 · ls -0.02em",
+    sample: "Calibración de Válvulas",
+  },
+  {
+    className: "type-wordmark",
+    name: "Wordmark",
+    spec: "Montserrat 400 · 21 / 24 / 18px · lh 1.2 · ls -0.01em",
+    sample: "Experiencia · Continuidad",
+  },
+  {
     className: "type-body",
     name: "Body",
     spec: "Montserrat 400 · 18px · lh 1.2 · ls -0.01em",
