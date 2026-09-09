@@ -24,3 +24,19 @@ export const record = {
     "Confianza",
   ],
 } as const;
+
+export interface Service {
+  code: string;
+  /** Ancla del panel correspondiente dentro de la sección. */
+  id: string;
+  name: string;
+}
+
+export const method = {
+  title: "Nuestros Servicios",
+  services: [
+    { code: "M-01", id: "m-01", name: "Sellado de Fugas en Operación" },
+    { code: "M-02", id: "m-02", name: "Calibración de Válvulas de Seguridad" },
+    { code: "M-03", id: "m-03", name: "X-Pando" },
+  ] satisfies Service[],
+} as const;

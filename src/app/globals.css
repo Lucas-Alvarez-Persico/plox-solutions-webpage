@@ -120,10 +120,11 @@
   }
 
   /*
-   * Palabras del marquee de "En cada operación". La escala del original va al
-   * revés de lo habitual: es más grande en tablet que en desktop.
+   * Encabezado chico (h3 en Framer): lo usan tanto las palabras del marquee
+   * como los nombres de servicio del índice. La escala del original va al revés
+   * de lo habitual: es más grande en tablet que en desktop.
    */
-  .type-wordmark {
+  .type-heading-sm {
     font-family: var(--font-body);
     font-weight: 400;
     font-size: 21px;
@@ -174,7 +175,7 @@
       font-size: 18px;
     }
 
-    .type-wordmark {
+    .type-heading-sm {
       font-size: 24px;
     }
   }
@@ -196,7 +197,7 @@
       font-size: 20px;
     }
 
-    .type-wordmark {
+    .type-heading-sm {
       font-size: 18px;
     }
   }
