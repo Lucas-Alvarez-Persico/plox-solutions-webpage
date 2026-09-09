@@ -21,6 +21,7 @@
   --color-orange-hot: #ff5a21;
   --color-gray: #9a9da1;
   --color-gray-deep: #585c62;
+  --color-blueprint: #7fa8c4;
 
   /* Familias tipográficas */
   --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;

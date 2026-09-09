@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
+import { LineworkLayer } from "@/components/linework-layer";
+import { images } from "@/content/images";
 
 export const metadata: Metadata = {
   title: "Styleguide — Plox Solutions",
@@ -159,6 +162,54 @@ export default function Styleguide() {
           <p className="type-eyebrow mt-4 text-gray-deep normal-case">
             Padding 16 / 24px, altura 48px, sin border-radius.
           </p>
+        </Section>
+
+        <Section title="Assets">
+          <div className="grid grid-cols-1 gap-8 tablet:grid-cols-2">
+            {(
+              [
+                ["logo", images.logo],
+                ["hero", images.hero],
+                ["servicioSellado", images.servicioSellado],
+                ["servicioValvulas", images.servicioValvulas],
+                ["servicioXpando", images.servicioXpando],
+                ["textura1", images.textura1],
+                ["textura2", images.textura2],
+              ] as const
+            ).map(([key, image]) => (
+              <figure key={key}>
+                <div className="flex aspect-video items-center justify-center overflow-hidden border border-gray-deep/40 bg-ink-deep">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    className="h-full w-full object-contain"
+                    placeholder="blur"
+                  />
+                </div>
+                <figcaption className="mt-3">
+                  <p className="type-label text-bone">{key}</p>
+                  <p className="type-code mt-1 text-gray-deep">
+                    {image.src.width}×{image.src.height}
+                  </p>
+                  <p className="type-eyebrow mt-2 text-gray normal-case">
+                    {image.alt || "Decorativa (alt vacío)"}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <figure className="mt-8">
+            <div className="relative aspect-video overflow-hidden border border-gray-deep/40 bg-bone">
+              <LineworkLayer className="absolute inset-0 text-blueprint" />
+            </div>
+            <figcaption className="mt-3">
+              <p className="type-label text-bone">LineworkLayer</p>
+              <p className="type-code mt-1 text-gray-deep">
+                SVG inline · viewBox 1200×700 · currentColor
+              </p>
+            </figcaption>
+          </figure>
         </Section>
 
         <Section title="Layout">
