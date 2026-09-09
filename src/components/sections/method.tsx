@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { ServicePanel } from "@/components/sections/service-panel";
 import { images } from "@/content/images";
 import { method } from "@/content/home";
 import { sectionIds } from "@/content/site";
@@ -42,12 +43,13 @@ export function Method() {
           </ol>
         </div>
 
-        {/* Los paneles de cada servicio llegan en el próximo commit. */}
-        <div className="flex flex-1 flex-col gap-16 tablet:gap-30">
+        <div className="flex min-w-0 flex-1 flex-col gap-16 tablet:gap-30">
           {method.services.map((service) => (
-            <div key={service.id} id={service.id} className="scroll-mt-18">
-              <div className="aspect-[805/474] w-full bg-bone-muted" />
-            </div>
+            <ServicePanel
+              key={service.id}
+              service={service}
+              ctaLabel={method.ctaLabel}
+            />
           ))}
         </div>
       </div>
