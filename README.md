@@ -1,7 +1,6 @@
 # Plox Solutions — Sitio web
 
-Sitio institucional de Plox Solutions, construido con Next.js. Replica en código el diseño
-original armado en Framer (`https://ploxsolutions.framer.website`).
+Sitio institucional de Plox Solutions, construido con Next.js.
 
 ## Stack
 
@@ -18,8 +17,6 @@ Requiere Node.js 20 o superior.
 npm install
 npm run dev
 ```
-
-El sitio queda en `http://localhost:3000`.
 
 ## Comandos
 
