@@ -18,7 +18,7 @@ export function SiteFooter() {
       />
 
       <div className="container-site relative flex flex-col gap-16 desktop:gap-20">
-        <nav aria-label="Pie de página">
+        <nav data-reveal aria-label="Pie de página">
           <div className="grid grid-cols-2 gap-8 desktop:grid-cols-4 desktop:gap-10">
             {footerColumns.map((column) => (
               <div key={column.heading} className="flex flex-col gap-4">

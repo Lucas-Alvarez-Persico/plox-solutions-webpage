@@ -31,13 +31,35 @@ export function Hero() {
         style={{ backgroundImage: SCRIM }}
       />
 
-      <LineworkLayer className="absolute inset-0 text-blueprint" />
+      <div
+        data-reveal
+        style={{ "--reveal-delay": "500ms" } as React.CSSProperties}
+        className="absolute inset-0"
+      >
+        <LineworkLayer className="h-full w-full text-blueprint" />
+      </div>
 
       <div className="container-site relative flex flex-col gap-6 tablet:gap-8 desktop:gap-10">
-        <p className="type-eyebrow text-gray">{hero.eyebrow}</p>
+        <p data-reveal className="type-eyebrow text-gray">
+          {hero.eyebrow}
+        </p>
 
+        {/* El título se revela palabra por palabra, como en el original. */}
         <h1 className="type-display-1 max-w-[1100px] text-bone-dim">
-          {hero.title}
+          {hero.title.split(" ").map((word, index) => (
+            <span key={`${word}-${index}`}>
+              {index > 0 ? " " : null}
+              <span
+                data-reveal
+                className="reveal-word"
+                style={
+                  { "--reveal-delay": `${120 + index * 55}ms` } as React.CSSProperties
+                }
+              >
+                {word}
+              </span>
+            </span>
+          ))}
         </h1>
 
         {/*
@@ -46,11 +68,18 @@ export function Hero() {
           arranca 8px a la derecha del resto del contenido — está así en el
           diseño de Framer.
         */}
-        <p className="type-body-l max-w-[520px] p-2 text-bone-dim">
+        <p
+          data-reveal
+          style={{ "--reveal-delay": "620ms" } as React.CSSProperties}
+          className="type-body-l max-w-[520px] p-2 text-bone-dim"
+        >
           {hero.body}
         </p>
 
-        <div>
+        <div
+          data-reveal
+          style={{ "--reveal-delay": "720ms" } as React.CSSProperties}
+        >
           <ButtonPrimary href={hero.cta.href}>{hero.cta.label}</ButtonPrimary>
         </div>
       </div>
