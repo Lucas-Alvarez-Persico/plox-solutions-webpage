@@ -27,6 +27,14 @@ npm run dev
 | `npm run start` | Sirve el build de producción |
 | `npm run lint` | Chequeo de ESLint |
 
+## Variables de entorno
+
+Copiá `.env.example` a `.env.local` y completá los valores.
+
+| Variable | Para qué sirve |
+| --- | --- |
+| `CONTACT_WEBHOOK_URL` | Destino de las consultas del formulario de contacto. Sin ella, el formulario avisa que el envío no está configurado. |
+
 ## Estructura
 
 ```
