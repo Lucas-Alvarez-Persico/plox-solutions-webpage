@@ -38,7 +38,7 @@ const typeStyles = [
   {
     className: "type-body-l",
     name: "Body L",
-    spec: "Montserrat 400 · 17px · lh 1.5 · ls -0.02em",
+    spec: "Montserrat 400 · 17 / 18 / 17px · lh 1.5 · ls -0.02em",
     sample:
       "Soluciones especializadas para intervenir, mantener y optimizar instalaciones industriales.",
   },

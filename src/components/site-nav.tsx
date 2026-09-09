@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { ButtonPrimary } from "@/components/button";
 import { images } from "@/content/images";
 import { navCta, navLinks, sectionIds } from "@/content/site";
 
@@ -72,12 +73,9 @@ export function SiteNav() {
             ))}
           </ul>
 
-          <Link
-            href={navCta.href}
-            className="type-label hidden h-12 items-center bg-orange px-6 text-bone transition-colors hover:bg-orange-hot tablet:flex"
-          >
+          <ButtonPrimary href={navCta.href} className="hidden tablet:inline-flex">
             {navCta.label}
-          </Link>
+          </ButtonPrimary>
 
           <button
             type="button"
@@ -112,13 +110,13 @@ export function SiteNav() {
             </li>
           ))}
           <li className="pt-4">
-            <Link
+            <ButtonPrimary
               href={navCta.href}
               onClick={() => setOpen(false)}
-              className="type-label flex h-12 w-full items-center justify-center bg-orange text-bone"
+              className="w-full"
             >
               {navCta.label}
-            </Link>
+            </ButtonPrimary>
           </li>
         </ul>
       </div>

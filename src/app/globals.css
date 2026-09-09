@@ -147,6 +147,11 @@
     .type-eyebrow {
       font-size: 12px;
     }
+
+    /* Solo en tablet el cuerpo sube a 18px; en desktop vuelve a 17px. */
+    .type-body-l {
+      font-size: 18px;
+    }
   }
 
   @media (width >= 1200px) {
@@ -156,6 +161,10 @@
 
     .type-display-2 {
       font-size: 64px;
+    }
+
+    .type-body-l {
+      font-size: 17px;
     }
   }
 
