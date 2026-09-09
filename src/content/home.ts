@@ -70,3 +70,63 @@ export const method = {
     },
   ] satisfies Service[],
 } as const;
+
+export interface EnquiryField {
+  name: string;
+  label: string;
+  placeholder: string;
+  type: "text" | "email" | "tel";
+  required: boolean;
+}
+
+export const enquiry = {
+  title: "Contanos sobre tu proyecto",
+  subtitle:
+    "Compartinos tu necesidad y nuestro equipo evaluará la mejor solución para acompañar tu operación.",
+  fields: [
+    {
+      name: "name",
+      label: "Nombre",
+      placeholder: "Nombre",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "email",
+      label: "Email",
+      placeholder: "e-mail",
+      type: "email",
+      required: true,
+    },
+    {
+      name: "phone",
+      label: "Teléfono",
+      placeholder: "Teléfono",
+      type: "tel",
+      required: false,
+    },
+    {
+      name: "location",
+      label: "Ubicación",
+      placeholder: "Ubicación",
+      type: "text",
+      required: false,
+    },
+  ] satisfies EnquiryField[],
+  details: {
+    name: "details",
+    label: "Servicio Requerido - Detalles Adicionales",
+    placeholder:
+      "Servicio requerido, cualquier otro detalle pertinente suyo y del proyecto",
+  },
+  submitLabel: "Contactanos",
+  messages: {
+    invalid: "Revisá los campos marcados y volvé a intentar.",
+    sending: "Enviando…",
+    success: "¡Gracias! Recibimos tu consulta y te vamos a contactar a la brevedad.",
+    error:
+      "No pudimos enviar tu consulta. Probá de nuevo en unos minutos o escribinos por otro medio.",
+    notConfigured:
+      "El envío del formulario todavía no está configurado. Escribinos por otro medio mientras tanto.",
+  },
+} as const;
