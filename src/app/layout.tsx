@@ -1,20 +1,57 @@
 import type { Metadata } from "next";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
 import { SiteRail } from "@/components/site-rail";
 import { fontVariables } from "@/lib/fonts";
+import { siteDescription, siteName, siteUrl } from "@/lib/site-config";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Plox Solutions",
-  description:
-    "Soluciones especializadas para intervenir, mantener y optimizar instalaciones industriales, reduciendo interrupciones y asegurando la continuidad de las operaciones.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${siteName} — Ingeniería para mantener la industria en movimiento`,
+    template: `%s — ${siteName}`,
+  },
+  description: siteDescription,
+  applicationName: siteName,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "es_AR",
+    url: "/",
+    siteName,
+    title: `${siteName} — Ingeniería para mantener la industria en movimiento`,
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} — Ingeniería para mantener la industria en movimiento`,
+    description: siteDescription,
+  },
 };
+
+/**
+ * Marca el documento como "con JavaScript" antes del primer pintado. Los
+ * estados iniciales de las animaciones cuelgan de esta clase, así el contenido
+ * queda visible si el script no llega a ejecutarse.
+ */
+const ENABLE_MOTION = `document.documentElement.classList.add("js")`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${fontVariables} h-full antialiased`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: ENABLE_MOTION }} />
+      </head>
       <body className="flex min-h-full flex-col">
+        <a
+          href="#a-01-hero"
+          className="type-label sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-orange focus:px-6 focus:py-3 focus:text-bone"
+        >
+          Saltar al contenido
+        </a>
+        <ScrollReveal />
         <SiteRail />
         <SiteNav />
         <main className="flex-1">{children}</main>

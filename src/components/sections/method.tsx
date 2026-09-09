@@ -27,11 +27,15 @@ export function Method() {
 
       <div className="container-site relative flex flex-col gap-12 tablet:flex-row tablet:items-start desktop:gap-20">
         <div className="flex flex-col gap-12 tablet:sticky tablet:top-30 tablet:w-70 tablet:shrink-0 desktop:w-95">
-          <div className="flex flex-col gap-4">
+          <div data-reveal className="flex flex-col gap-4">
             <h2 className="type-display-2 text-ink">{method.title}</h2>
           </div>
 
-          <ol className="hidden list-none flex-col gap-5 tablet:flex">
+          <ol
+            data-reveal
+            style={{ "--reveal-delay": "150ms" } as React.CSSProperties}
+            className="hidden list-none flex-col gap-5 tablet:flex"
+          >
             {method.services.map((service) => (
               <li key={service.code} className="flex items-center gap-4">
                 <p className="type-eyebrow shrink-0 text-gray-deep">

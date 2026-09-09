@@ -20,7 +20,11 @@ export function ServicePanel({
       aria-label={service.name}
       className="flex scroll-mt-18 flex-col gap-8"
     >
-      <div className="relative aspect-[17/10] w-full overflow-clip bg-bone-muted">
+      <div
+        data-reveal
+        data-zoom
+        className="relative aspect-[17/10] w-full overflow-clip bg-bone-muted"
+      >
         <Image
           src={service.image.src}
           alt={service.image.alt}
@@ -30,7 +34,11 @@ export function ServicePanel({
         />
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div
+        data-reveal
+        style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+        className="flex flex-col gap-4"
+      >
         <p className="type-eyebrow text-orange">{service.code}</p>
 
         <p className="type-prose max-w-[660px] text-ink">

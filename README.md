@@ -33,6 +33,7 @@ Copiá `.env.example` a `.env.local` y completá los valores.
 
 | Variable | Para qué sirve |
 | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | URL pública del sitio, para metadata absoluta, sitemap y robots. |
 | `CONTACT_WEBHOOK_URL` | Destino de las consultas del formulario de contacto. Sin ella, el formulario avisa que el envío no está configurado. |
 
 ## Estructura

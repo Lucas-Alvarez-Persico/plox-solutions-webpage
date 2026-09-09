@@ -81,14 +81,20 @@ export function Enquiry() {
       className="section-x scroll-mt-18 bg-ink py-16 tablet:py-24 desktop:py-40"
     >
       <div className="container-site flex flex-col gap-16">
-        <header className="flex flex-col gap-4">
+        <header data-reveal className="flex flex-col gap-4">
           <h2 className="type-display-2 text-bone">{enquiry.title}</h2>
           <p className="type-prose max-w-[660px] text-gray">
             {enquiry.subtitle}
           </p>
         </header>
 
-        <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-8">
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          data-reveal
+          style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
+          className="flex flex-col gap-8"
+        >
           <div className="grid gap-6 tablet:grid-cols-2 tablet:gap-x-8 desktop:gap-y-8 desktop:gap-x-10">
             {enquiry.fields.map((field) => {
               const fieldId = `${formId}-${field.name}`;
