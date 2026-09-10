@@ -3,7 +3,13 @@
  * ocupen solo del layout.
  */
 
-/** Ids de las secciones de la home, tal como los usa el diseño original. */
+/**
+ * Ids de las secciones de la home, tal como los usa el diseño original.
+ *
+ * Los enlaces que apuntan a ellas se escriben como `/#id`, no como `#id`: el
+ * nav y el footer también se muestran en las páginas de servicio, donde esas
+ * secciones no existen y un ancla suelta no llevaría a ningún lado.
+ */
 export const sectionIds = {
   hero: "a-01-hero",
   record: "a-02-record",
@@ -17,15 +23,15 @@ export interface NavLink {
 }
 
 export const navLinks: NavLink[] = [
-  { label: "Inicio", href: `#${sectionIds.hero}` },
-  { label: "Nosotros", href: `#${sectionIds.record}` },
-  { label: "Servicio", href: `#${sectionIds.method}` },
-  { label: "Contacto", href: `#${sectionIds.enquiry}` },
+  { label: "Inicio", href: `/#${sectionIds.hero}` },
+  { label: "Nosotros", href: `/#${sectionIds.record}` },
+  { label: "Servicio", href: `/#${sectionIds.method}` },
+  { label: "Contacto", href: `/#${sectionIds.enquiry}` },
 ];
 
 export const navCta: NavLink = {
   label: "Contactanos",
-  href: `#${sectionIds.enquiry}`,
+  href: `/#${sectionIds.enquiry}`,
 };
 
 export interface FooterColumn {
@@ -37,10 +43,10 @@ export const footerColumns: FooterColumn[] = [
   {
     heading: "Sitio",
     links: [
-      { label: "Inicio", href: `#${sectionIds.hero}` },
-      { label: "Sobre Nosotros", href: `#${sectionIds.record}` },
-      { label: "Servicios", href: `#${sectionIds.method}` },
-      { label: "Contacto", href: `#${sectionIds.enquiry}` },
+      { label: "Inicio", href: `/#${sectionIds.hero}` },
+      { label: "Sobre Nosotros", href: `/#${sectionIds.record}` },
+      { label: "Servicios", href: `/#${sectionIds.method}` },
+      { label: "Contacto", href: `/#${sectionIds.enquiry}` },
     ],
   },
   {

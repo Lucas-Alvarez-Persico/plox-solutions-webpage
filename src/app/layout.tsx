@@ -36,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="es" className={`${fontVariables} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <a
-          href="#a-01-hero"
+          href="#contenido"
           className="type-label sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-orange focus:px-6 focus:py-3 focus:text-bone"
         >
           Saltar al contenido
@@ -44,7 +44,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ScrollReveal />
         <SiteRail />
         <SiteNav />
-        <main className="flex-1">{children}</main>
+        <main id="contenido" className="flex-1">
+          {children}
+        </main>
         <SiteFooter />
       </body>
     </html>

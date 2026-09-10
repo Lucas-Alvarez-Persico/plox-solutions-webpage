@@ -47,7 +47,7 @@ export function SiteNav() {
       >
         <div className="container-site flex h-11 items-center justify-between tablet:h-12">
           <Link
-            href={`#${sectionIds.hero}`}
+            href={`/#${sectionIds.hero}`}
             className="flex items-center"
             aria-label={`${images.logo.alt} — ir al inicio`}
           >
