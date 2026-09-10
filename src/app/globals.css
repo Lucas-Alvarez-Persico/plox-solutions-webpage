@@ -14,6 +14,8 @@
   /* Paleta */
   --color-ink: #1c1e20;
   --color-ink-deep: #121416;
+  /* Fondo de la sección de técnicas en las páginas de servicio. */
+  --color-ink-deepest: #1a1a1a;
   --color-bone: #f4f3f0;
   --color-bone-dim: #e4e3de;
   --color-bone-muted: #d6d4ce;
@@ -229,42 +231,48 @@
 
 /* ---------------------------------------------------------------------------
    Movimiento
-   Todo arranca visible: los estados ocultos se aplican solo bajo `.js`, que
-   agrega un script en el layout. Si el JS falla o está bloqueado, el contenido
-   se ve igual. Y con `prefers-reduced-motion` no se mueve nada.
+   El contenido no puede quedar invisible. Los estados ocultos se aplican solo
+   dentro de `@media (scripting: enabled)`: sin JavaScript la regla no matchea y
+   se ve todo. Además cada elemento lleva una animación de reserva que lo revela
+   a los 6 segundos aunque el observer nunca llegue a correr. Y con
+   `prefers-reduced-motion` no se mueve nada.
    --------------------------------------------------------------------------- */
 
 @layer components {
-  .js [data-reveal] {
-    opacity: 0;
+  @media (scripting: enabled) {
+    [data-reveal] {
+      opacity: 0;
     transform: translateY(24px);
     filter: blur(6px);
     transition:
       opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
       filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
-    transition-delay: var(--reveal-delay, 0ms);
-  }
+      transition-delay: var(--reveal-delay, 0ms);
+      /* Red de seguridad puramente CSS: no depende de que React hidrate. */
+      animation: reveal-fallback 1ms linear 6s forwards;
+    }
 
-  .js [data-reveal][data-revealed] {
-    opacity: 1;
-    transform: none;
-    filter: none;
+    [data-reveal][data-revealed] {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      animation: none;
+    }
+
+    [data-zoom] img {
+      transform: scale(1.06);
+      transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    [data-zoom][data-revealed] img {
+      transform: scale(1);
+    }
   }
 
   /* Palabras del título del hero: se revelan una tras otra. */
   .reveal-word {
     display: inline-block;
-  }
-
-  /* La ilustración de cada panel entra apenas agrandada y se asienta. */
-  .js [data-zoom] img {
-    transform: scale(1.06);
-    transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .js [data-zoom][data-revealed] img {
-    transform: scale(1);
   }
 
   /* Marquee continuo: la pista lleva el contenido duplicado. */
@@ -274,6 +282,14 @@
 
   .marquee:hover .marquee-track {
     animation-play-state: paused;
+  }
+}
+
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 }
 
@@ -287,16 +303,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js [data-reveal],
-  .js [data-reveal][data-revealed] {
+  [data-reveal],
+  [data-reveal][data-revealed] {
     opacity: 1;
     transform: none;
     filter: none;
     transition: none;
+    animation: none;
   }
 
-  .js [data-zoom] img,
-  .js [data-zoom][data-revealed] img {
+  [data-zoom] img,
+  [data-zoom][data-revealed] img {
     transform: none;
     transition: none;
   }

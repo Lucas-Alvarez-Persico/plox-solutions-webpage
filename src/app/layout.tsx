@@ -31,19 +31,9 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * Marca el documento como "con JavaScript" antes del primer pintado. Los
- * estados iniciales de las animaciones cuelgan de esta clase, así el contenido
- * queda visible si el script no llega a ejecutarse.
- */
-const ENABLE_MOTION = `document.documentElement.classList.add("js")`;
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${fontVariables} h-full antialiased`}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: ENABLE_MOTION }} />
-      </head>
       <body className="flex min-h-full flex-col">
         <a
           href="#a-01-hero"
