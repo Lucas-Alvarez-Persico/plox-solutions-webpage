@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AnchorScroll } from "@/components/anchor-scroll";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Saltar al contenido
         </a>
+        <AnchorScroll />
         <ScrollReveal />
         <SiteRail />
         <SiteNav />

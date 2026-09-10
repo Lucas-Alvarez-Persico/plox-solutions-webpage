@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 /**
- * Botón principal del sitio: 48px de alto, sin border-radius y en naranja de
- * marca. Se usa en el nav, en el hero y en las llamadas a la acción.
+ * Botón principal del sitio: 48px de alto, en naranja de marca y con la
+ * esquina superior derecha recortada en diagonal. Se usa en el nav, en el hero
+ * y en las llamadas a la acción.
  */
 export function ButtonPrimary({
   href,
@@ -19,7 +20,7 @@ export function ButtonPrimary({
     <Link
       href={href}
       onClick={onClick}
-      className={`type-label inline-flex h-12 items-center justify-center bg-orange px-6 text-bone transition-colors hover:bg-orange-hot ${className}`}
+      className={`corner-cut type-label inline-flex h-12 items-center justify-center bg-orange px-6 text-bone transition-colors hover:bg-navy ${className}`}
     >
       {children}
     </Link>

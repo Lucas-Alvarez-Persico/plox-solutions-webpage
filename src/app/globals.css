@@ -11,6 +11,10 @@
   --breakpoint-tablet: 810px;
   --breakpoint-desktop: 1200px;
 
+  /* Curva y duración de las transiciones, tomadas del original. */
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: cubic-bezier(0.44, 0, 0.56, 1);
+
   /* Paleta */
   --color-ink: #1c1e20;
   --color-ink-deep: #121416;
@@ -259,6 +263,30 @@
     }
   }
 
+  /*
+   * Esquina superior derecha recortada en diagonal: la llevan todos los
+   * botones naranjas del sitio.
+   */
+  .corner-cut {
+    clip-path: polygon(
+      0 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% 100%,
+      0 100%
+    );
+  }
+
+  /*
+   * El recorte también se lleva puesto el anillo de foco, que se dibuja por
+   * fuera del borde. Acá va hacia adentro, y en color ink para que contraste
+   * contra el naranja.
+   */
+  .corner-cut:focus-visible {
+    outline-color: var(--color-ink);
+    outline-offset: -5px;
+  }
+
   /* Contenedor y ritmo vertical de las secciones */
   .container-site {
     width: 100%;
@@ -324,8 +352,12 @@
   }
 
   /* Marquee continuo: la pista lleva el contenido duplicado. */
+  /*
+   * El original define una velocidad de 30 px/s. Con el ancho de la pista en
+   * desktop (~957px por copia) eso da unos 32 segundos por vuelta.
+   */
   .marquee-track {
-    animation: marquee-scroll 40s linear infinite;
+    animation: marquee-scroll 32s linear infinite;
   }
 
   .marquee:hover .marquee-track {
