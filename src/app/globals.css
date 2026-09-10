@@ -57,6 +57,11 @@
 }
 
 @layer base {
+  html {
+    /* El original lo inyecta por JS; los saltos de ancla van suaves. */
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-ink);
     color: var(--color-bone-dim);
@@ -284,7 +289,7 @@
     [data-reveal] {
       opacity: 0;
     transform: translateY(24px);
-    filter: blur(6px);
+    filter: blur(var(--reveal-blur, 6px));
     transition:
       opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -314,6 +319,8 @@
   /* Palabras del título del hero: se revelan una tras otra. */
   .reveal-word {
     display: inline-block;
+    /* El original desenfoca 10px cada palabra del título. */
+    --reveal-blur: 10px;
   }
 
   /* Marquee continuo: la pista lleva el contenido duplicado. */
@@ -365,5 +372,111 @@
 
   .marquee-duplicate {
     display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Intro del hero
+   Reconstruida del sitio original: un reloj de 1800ms que arranca al cargar.
+   La grilla azul entra y se va (el "flash"), y la foto aparece detrás mientras
+   se asienta desde una escala levemente mayor.
+
+   Solo corre desde 810px y sin movimiento reducido, igual que el original. Si
+   no corre, el estado por defecto ya es el final: foto visible y grilla
+   invisible.
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  .hero-photo {
+    opacity: 1;
+  }
+
+  /* La grilla solo se ve durante la intro. */
+  .hero-linework {
+    opacity: 0;
+  }
+
+  @media (min-width: 810px) {
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-photo {
+        animation: hero-photo-in 1800ms linear both;
+      }
+
+      .hero-linework {
+        animation: hero-linework-flash 1800ms linear both;
+      }
+    }
+  }
+}
+
+@keyframes hero-photo-in {
+  0%,
+  40% {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  75%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-linework-flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  85%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Entrada del texto del hero
+   Valores tomados del sitio original: sin desenfoque, solo desplazamiento
+   vertical y opacidad, con la misma curva y los mismos retardos.
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  .hero-in {
+    animation: hero-text-in 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-in-eyebrow {
+    --hero-in-y: 12px;
+    animation-delay: 0ms;
+  }
+
+  .hero-in-body {
+    --hero-in-y: 16px;
+    animation-delay: 500ms;
+  }
+
+  .hero-in-cta {
+    --hero-in-y: 16px;
+    animation-delay: 620ms;
+  }
+}
+
+@keyframes hero-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--hero-in-y, 16px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

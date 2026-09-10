@@ -16,14 +16,16 @@ export function Hero() {
       id={sectionIds.hero}
       className="section-x relative flex min-h-[88vh] scroll-mt-18 flex-col overflow-clip bg-bone pt-25 pb-8 tablet:min-h-[94vh] tablet:pt-35 tablet:pb-10 desktop:pt-25 desktop:pb-12"
     >
-      <Image
-        src={images.hero.src}
-        alt={images.hero.alt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+      <div className="hero-photo absolute inset-0">
+        <Image
+          src={images.hero.src}
+          alt={images.hero.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
 
       <div
         aria-hidden="true"
@@ -31,16 +33,12 @@ export function Hero() {
         style={{ backgroundImage: SCRIM }}
       />
 
-      <div
-        data-reveal
-        style={{ "--reveal-delay": "500ms" } as React.CSSProperties}
-        className="absolute inset-0"
-      >
+      <div className="hero-linework absolute inset-0">
         <LineworkLayer className="h-full w-full text-blueprint" />
       </div>
 
       <div className="container-site relative flex flex-col gap-6 tablet:gap-8 desktop:gap-10">
-        <p data-reveal className="type-eyebrow text-gray">
+        <p className="hero-in hero-in-eyebrow type-eyebrow text-gray">
           {hero.eyebrow}
         </p>
 
@@ -68,18 +66,11 @@ export function Hero() {
           arranca 8px a la derecha del resto del contenido — está así en el
           diseño de Framer.
         */}
-        <p
-          data-reveal
-          style={{ "--reveal-delay": "620ms" } as React.CSSProperties}
-          className="type-body-l max-w-[520px] p-2 text-bone-dim"
-        >
+        <p className="hero-in hero-in-body type-body-l max-w-[520px] p-2 text-bone-dim">
           {hero.body}
         </p>
 
-        <div
-          data-reveal
-          style={{ "--reveal-delay": "720ms" } as React.CSSProperties}
-        >
+        <div className="hero-in hero-in-cta">
           <ButtonPrimary href={hero.cta.href}>{hero.cta.label}</ButtonPrimary>
         </div>
       </div>

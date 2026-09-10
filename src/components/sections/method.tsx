@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { ServicePanel } from "@/components/sections/service-panel";
+import { StageList } from "@/components/sections/stage-list";
 import { images } from "@/content/images";
 import { method } from "@/content/home";
 import { sectionIds } from "@/content/site";
@@ -31,20 +32,7 @@ export function Method() {
             <h2 className="type-display-2 text-ink">{method.title}</h2>
           </div>
 
-          <ol
-            data-reveal
-            style={{ "--reveal-delay": "150ms" } as React.CSSProperties}
-            className="hidden list-none flex-col gap-5 tablet:flex"
-          >
-            {method.services.map((service) => (
-              <li key={service.code} className="flex items-center gap-4">
-                <p className="type-eyebrow shrink-0 text-gray-deep">
-                  {service.code}
-                </p>
-                <p className="type-heading-sm text-ink">{service.name}</p>
-              </li>
-            ))}
-          </ol>
+          <StageList services={method.services} />
         </div>
 
         <div className="flex min-w-0 flex-1 flex-col gap-16 tablet:gap-30">
