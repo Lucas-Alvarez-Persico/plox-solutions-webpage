@@ -160,7 +160,7 @@ export function Enquiry() {
             <button
               type="submit"
               disabled={isSending}
-              className="type-label inline-flex h-12 w-full items-center justify-center bg-orange px-6 text-bone transition-colors hover:bg-orange-hot disabled:opacity-70 tablet:w-auto tablet:self-start"
+              className="corner-cut type-label inline-flex h-12 w-full items-center justify-center bg-orange px-6 text-bone transition-colors hover:bg-navy disabled:opacity-70 tablet:w-auto tablet:self-start"
             >
               {isSending ? enquiry.messages.sending : enquiry.submitLabel}
             </button>
