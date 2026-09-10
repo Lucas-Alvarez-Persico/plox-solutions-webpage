@@ -5,7 +5,7 @@ import { LineworkLayer } from "@/components/linework-layer";
 import { images } from "@/content/images";
 
 export const metadata: Metadata = {
-  title: "Styleguide — Plox Solutions",
+  title: "Styleguide",
   description: "Tokens de diseño del sitio: paleta, tipografía y layout.",
   robots: { index: false, follow: false },
 };

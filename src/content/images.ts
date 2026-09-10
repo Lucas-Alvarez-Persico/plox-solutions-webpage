@@ -1,6 +1,15 @@
 import type { StaticImageData } from "next/image";
 
 import heroPhoto from "@/assets/images/hero.jpg";
+import miniaturaSellado from "@/assets/images/miniatura-sellado.jpg";
+import miniaturaValvulas from "@/assets/images/miniatura-valvulas.jpg";
+import miniaturaXpando from "@/assets/images/miniatura-xpando.jpg";
+import portadaSellado from "@/assets/images/portada-sellado.jpg";
+import portadaValvulas from "@/assets/images/portada-valvulas.jpg";
+import portadaXpando from "@/assets/images/portada-xpando.jpg";
+import posterSellado from "@/assets/images/poster-sellado.jpg";
+import posterValvulas from "@/assets/images/poster-valvulas.jpg";
+import posterXpando from "@/assets/images/poster-xpando.jpg";
 import logo from "@/assets/images/logo-plox.png";
 import servicioSellado from "@/assets/images/servicio-sellado.jpg";
 import servicioValvulas from "@/assets/images/servicio-valvulas.jpg";
@@ -41,6 +50,48 @@ export const images = {
   },
   textura2: {
     src: textura2,
+    alt: "",
+  },
+
+  // Portadas de las páginas de servicio
+  portadaSellado: {
+    src: portadaSellado,
+    alt: "Primer plano de una brida empernada sobre una cañería industrial, con el resto de la instalación desenfocada al fondo.",
+  },
+  portadaValvulas: {
+    src: portadaValvulas,
+    alt: "Vista cenital de un conjunto de válvulas y medidores conectados por cañerías, con varios manómetros a la vista.",
+  },
+  portadaXpando: {
+    src: portadaXpando,
+    alt: "Lata de compuesto para uniones X-Pando sobre un banco de taller, rodeada de caños roscados y accesorios.",
+  },
+
+  // Miniaturas del navegador entre servicios
+  miniaturaSellado: {
+    src: miniaturaSellado,
+    alt: "",
+  },
+  miniaturaValvulas: {
+    src: miniaturaValvulas,
+    alt: "",
+  },
+  miniaturaXpando: {
+    src: miniaturaXpando,
+    alt: "",
+  },
+
+  // Primer fotograma de cada video, para usar como póster
+  posterSellado: {
+    src: posterSellado,
+    alt: "",
+  },
+  posterValvulas: {
+    src: posterValvulas,
+    alt: "",
+  },
+  posterXpando: {
+    src: posterXpando,
     alt: "",
   },
 } as const satisfies Record<string, SiteImage>;
