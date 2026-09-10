@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "plox-solutions",
+  "main": ".open-next/worker.js",
+
+  // Fecha que documenta el adaptador de OpenNext. El mínimo exigido es
+  // 2024-09-23 y `nodejs_compat` es obligatorio.
+  "compatibility_date": "2024-12-30",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "plox-solutions"
+    }
+  ],
+
+  // Habilita la optimización de next/image a través de Cloudflare Images.
+  // Si tu plan no lo incluye, sacá este bloque y poné
+  // `images: { unoptimized: true }` en next.config.ts.
+  "images": {
+    "binding": "IMAGES"
+  }
+
+  // Sin bucket R2: el sitio es estático y no usa revalidación, así que no
+  // necesita caché incremental.
+}
