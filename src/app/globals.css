@@ -129,6 +129,14 @@
     letter-spacing: -0.02em;
   }
 
+  /* Cuerpo de 16px sin tracking: los bloques de técnica. */
+  .type-detail {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
   /* Bajada de las portadas de servicio: sin tracking negativo, a diferencia
      del resto de los cuerpos de texto. */
   .type-summary {
