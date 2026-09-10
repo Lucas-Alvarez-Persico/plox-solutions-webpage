@@ -1,6 +1,5 @@
-import Image from "next/image";
-
 import { ButtonPrimary } from "@/components/button";
+import { RevealFrame } from "@/components/sections/reveal-frame";
 import type { Service } from "@/content/home";
 
 /**
@@ -20,19 +19,7 @@ export function ServicePanel({
       aria-label={service.name}
       className="flex scroll-mt-18 flex-col gap-8"
     >
-      <div
-        data-reveal
-        data-zoom
-        className="relative aspect-[17/10] w-full overflow-clip bg-bone-muted"
-      >
-        <Image
-          src={service.image.src}
-          alt={service.image.alt}
-          fill
-          sizes="(min-width: 1200px) 805px, (min-width: 810px) 395px, 100vw"
-          className="object-cover object-center"
-        />
-      </div>
+      <RevealFrame image={service.image} />
 
       <div
         data-reveal
