@@ -105,6 +105,15 @@
     letter-spacing: -0.02em;
   }
 
+  /* Bajada de las portadas de servicio: sin tracking negativo, a diferencia
+     del resto de los cuerpos de texto. */
+  .type-summary {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
   .type-body-m {
     font-family: var(--font-body);
     font-weight: 400;
