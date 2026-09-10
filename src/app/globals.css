@@ -23,6 +23,10 @@
   --color-orange-hot: #ff5a21;
   --color-gray: #9a9da1;
   --color-gray-deep: #585c62;
+  /* Azul del logo, usado en los títulos de las páginas de servicio. */
+  --color-navy: #0a1e47;
+  /* Negro de los cuerpos de texto sobre fondo claro. */
+  --color-ink-black: #16181a;
   --color-blueprint: #7fa8c4;
 
   /* Familias tipográficas */
@@ -98,6 +102,26 @@
   }
 
   .type-body-l {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+  }
+
+  /* Título de bloque en las páginas de servicio: Archivo en mayúsculas. */
+  .type-kicker {
+    font-family: var(--font-ui);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Cuerpo de 17px que no cambia entre breakpoints, a diferencia de
+     .type-body-l, que en tablet sube a 18px. */
+  .type-body-s {
     font-family: var(--font-body);
     font-weight: 400;
     font-size: 17px;

@@ -20,6 +20,9 @@ const palette = [
   { name: "orange-hot", hex: "#FF5A21", use: "Variante de hover" },
   { name: "gray", hex: "#9A9DA1", use: "Texto secundario sobre oscuro" },
   { name: "gray-deep", hex: "#585C62", use: "Texto terciario, links de nav" },
+  { name: "navy", hex: "#0A1E47", use: "Títulos de bloque en páginas de servicio" },
+  { name: "ink-black", hex: "#16181A", use: "Cuerpos de texto sobre fondo claro" },
+  { name: "ink-deepest", hex: "#1A1A1A", use: "Fondo de la sección de técnicas" },
 ];
 
 const typeStyles = [
@@ -41,6 +44,26 @@ const typeStyles = [
     spec: "Montserrat 400 · 17 / 18 / 17px · lh 1.5 · ls -0.02em",
     sample:
       "Soluciones especializadas para intervenir, mantener y optimizar instalaciones industriales.",
+  },
+  {
+    className: "type-kicker",
+    name: "Kicker",
+    spec: "Archivo 400 · 17px · lh 1.4 · ls 0.08em · uppercase",
+    sample: "Cuando detener la planta no es la primera opción",
+  },
+  {
+    className: "type-summary",
+    name: "Summary",
+    spec: "Montserrat 400 · 18px · lh 1.5 · sin tracking",
+    sample:
+      "Intervenimos pérdidas en instalaciones industriales sin necesidad de detener el sistema.",
+  },
+  {
+    className: "type-body-s",
+    name: "Body S",
+    spec: "Montserrat 400 · 17px fijo · lh 1.5 · ls -0.02em",
+    sample:
+      "La intervención parte de analizar la ubicación y las condiciones de la fuga.",
   },
   {
     className: "type-prose",
