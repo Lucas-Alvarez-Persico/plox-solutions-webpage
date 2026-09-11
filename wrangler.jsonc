@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "plox-solutions",
+  "name": "plox-solutions-webpage",
   "main": ".open-next/worker.js",
 
   // Fecha que documenta el adaptador de OpenNext. El mínimo exigido es
@@ -16,7 +16,7 @@
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "plox-solutions"
+      "service": "plox-solutions-webpage"
     }
   ],
 
