@@ -24,7 +24,7 @@ export function Outcome({ servicio }: { servicio: Servicio }) {
           <div className="flex flex-col gap-16 tablet:gap-[50px]">
             <h2
               data-reveal
-              className="type-display-2 text-[39px] break-words text-orange"
+              className="type-display-2 text-[39px] break-words text-green"
             >
               {tecnicas.encabezado}
             </h2>

@@ -26,7 +26,7 @@ export function ServicePanel({
         style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
         className="flex flex-col gap-4"
       >
-        <p className="type-eyebrow text-orange">{service.code}</p>
+        <p className="type-eyebrow text-green">{service.code}</p>
 
         <p className="type-prose max-w-[660px] text-ink">
           {service.description}

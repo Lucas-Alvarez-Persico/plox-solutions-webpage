@@ -20,7 +20,7 @@ export function Story({ servicio }: { servicio: Servicio }) {
             }
             className="flex flex-col gap-5"
           >
-            <h2 className="type-kicker text-navy">{bloque.titulo}</h2>
+            <h2 className="type-kicker text-teal">{bloque.titulo}</h2>
             <p className="type-body-s text-ink-black">{bloque.cuerpo}</p>
           </div>
         ))}

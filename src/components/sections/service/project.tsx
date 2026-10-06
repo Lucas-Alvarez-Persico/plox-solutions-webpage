@@ -33,7 +33,7 @@ export function Project({ servicio }: { servicio: Servicio }) {
       <div className="container-site relative flex flex-col gap-5">
         <p
           data-reveal
-          className="type-eyebrow text-orange"
+          className="type-eyebrow text-green"
           style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
         >
           {servicio.eyebrow}

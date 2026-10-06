@@ -20,7 +20,7 @@ export function ButtonPrimary({
     <Link
       href={href}
       onClick={onClick}
-      className={`corner-cut type-label inline-flex h-12 items-center justify-center bg-orange px-6 text-bone transition-colors hover:bg-navy ${className}`}
+      className={`corner-cut type-label inline-flex h-12 items-center justify-center bg-green px-6 text-bone transition-colors hover:bg-teal ${className}`}
     >
       {children}
     </Link>

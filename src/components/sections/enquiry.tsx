@@ -8,7 +8,7 @@ import { sectionIds } from "@/content/site";
 type Status = "idle" | "sending" | "success" | "error" | "notConfigured";
 
 const FIELD_SHELL =
-  "flex h-14 items-center bg-ink-deep px-4 transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-orange";
+  "flex h-14 items-center bg-ink-deep px-4 transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-green";
 
 const CONTROL =
   "type-body-l w-full bg-transparent text-bone placeholder:text-gray-deep focus:outline-none";
@@ -109,7 +109,7 @@ export function Enquiry() {
                     {field.label}
                   </label>
                   <div
-                    className={`${FIELD_SHELL} ${hasError ? "outline outline-2 outline-orange" : ""}`}
+                    className={`${FIELD_SHELL} ${hasError ? "outline outline-2 outline-green" : ""}`}
                   >
                     <input
                       id={fieldId}
@@ -134,7 +134,7 @@ export function Enquiry() {
             >
               {enquiry.details.label}
             </label>
-            <div className="bg-ink-deep p-4 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-orange">
+            <div className="bg-ink-deep p-4 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-green">
               <textarea
                 id={`${formId}-details`}
                 name={enquiry.details.name}
@@ -160,7 +160,7 @@ export function Enquiry() {
             <button
               type="submit"
               disabled={isSending}
-              className="corner-cut type-label inline-flex h-12 w-full items-center justify-center bg-orange px-6 text-bone transition-colors hover:bg-navy disabled:opacity-70 tablet:w-auto tablet:self-start"
+              className="corner-cut type-label inline-flex h-12 w-full items-center justify-center bg-green px-6 text-bone transition-colors hover:bg-teal disabled:opacity-70 tablet:w-auto tablet:self-start"
             >
               {isSending ? enquiry.messages.sending : enquiry.submitLabel}
             </button>
@@ -174,7 +174,7 @@ export function Enquiry() {
               role="status"
               aria-live="polite"
               className={`type-eyebrow ${message ? "mt-4" : ""} ${
-                status === "success" ? "text-bone" : "text-orange"
+                status === "success" ? "text-bone" : "text-green"
               }`}
             >
               {message}

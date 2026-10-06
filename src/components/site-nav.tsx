@@ -40,7 +40,7 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-[5] bg-bone">
+    <header className="sticky top-0 z-[5] bg-white">
       <nav
         aria-label="Principal"
         className="section-x flex h-16 items-center tablet:h-18"
@@ -95,7 +95,7 @@ export function SiteNav() {
       <div
         id="menu-principal"
         hidden={!open}
-        className="section-x fixed inset-x-0 top-16 bottom-0 z-[5] bg-bone tablet:hidden"
+        className="section-x fixed inset-x-0 top-16 bottom-0 z-[5] bg-white tablet:hidden"
       >
         <ul className="container-site flex flex-col gap-6 pt-8">
           {navLinks.map((link) => (

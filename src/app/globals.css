@@ -23,12 +23,12 @@
   --color-bone: #f4f3f0;
   --color-bone-dim: #e4e3de;
   --color-bone-muted: #d6d4ce;
-  --color-orange: #eb6a2f;
-  --color-orange-hot: #ff5a21;
+  /* Verde de marca: botones, eyebrows de servicio y el encabezado de técnicas. */
+  --color-green: #81c907;
   --color-gray: #9a9da1;
   --color-gray-deep: #585c62;
-  /* Azul del logo, usado en los títulos de las páginas de servicio. */
-  --color-navy: #0a1e47;
+  /* Azul petróleo del logo, usado en los títulos de las páginas de servicio. */
+  --color-teal: #012a36;
   /* Negro de los cuerpos de texto sobre fondo claro. */
   --color-ink-black: #16181a;
   --color-blueprint: #7fa8c4;
@@ -73,7 +73,7 @@
   }
 
   ::selection {
-    background-color: var(--color-orange);
+    background-color: var(--color-green);
     color: var(--color-bone);
   }
 

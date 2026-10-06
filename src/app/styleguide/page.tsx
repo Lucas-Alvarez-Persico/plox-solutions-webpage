@@ -13,14 +13,13 @@ export const metadata: Metadata = {
 const palette = [
   { name: "ink", hex: "#1C1E20", use: "Fondo base del sitio" },
   { name: "ink-deep", hex: "#121416", use: "Superficies sobre el fondo" },
-  { name: "bone", hex: "#F4F3F0", use: "Fondo claro, texto sobre naranja" },
+  { name: "bone", hex: "#F4F3F0", use: "Fondo claro, texto sobre el verde" },
   { name: "bone-dim", hex: "#E4E3DE", use: "Texto principal sobre oscuro" },
   { name: "bone-muted", hex: "#D6D4CE", use: "Bordes y detalles sobre claro" },
-  { name: "orange", hex: "#EB6A2F", use: "Color de marca, CTAs" },
-  { name: "orange-hot", hex: "#FF5A21", use: "Variante de hover" },
+  { name: "green", hex: "#81C907", use: "Color de marca, CTAs" },
   { name: "gray", hex: "#9A9DA1", use: "Texto secundario sobre oscuro" },
   { name: "gray-deep", hex: "#585C62", use: "Texto terciario, links de nav" },
-  { name: "navy", hex: "#0A1E47", use: "Títulos de bloque en páginas de servicio" },
+  { name: "teal", hex: "#012A36", use: "Títulos de bloque en servicio, hover de los botones" },
   { name: "ink-black", hex: "#16181A", use: "Cuerpos de texto sobre fondo claro" },
   { name: "ink-deepest", hex: "#1A1A1A", use: "Fondo de la sección de técnicas" },
 ];
@@ -144,7 +143,7 @@ export default function Styleguide() {
     <main className="section-x py-16">
       <div className="container-site">
         <header className="pb-8">
-          <p className="type-eyebrow text-orange">Plox Solutions</p>
+          <p className="type-eyebrow text-green">Plox Solutions</p>
           <h1 className="type-display-2 mt-4 text-bone">Styleguide</h1>
           <p className="type-body-l mt-4 max-w-xl text-gray">
             Tokens extraídos del diseño original en Framer. Los tamaños con tres
@@ -175,7 +174,7 @@ export default function Styleguide() {
             {typeStyles.map((style) => (
               <div key={style.name}>
                 <div className="flex flex-wrap items-baseline gap-x-4">
-                  <p className="type-label text-orange">{style.name}</p>
+                  <p className="type-label text-green">{style.name}</p>
                   <p className="type-code text-gray-deep">{style.spec}</p>
                 </div>
                 <p className={`${style.className} mt-3 text-bone-dim`}>
@@ -190,7 +189,7 @@ export default function Styleguide() {
           <div className="flex flex-wrap items-center gap-4">
             <button
               type="button"
-              className="type-label bg-orange px-6 py-4 text-bone transition-colors hover:bg-orange-hot"
+              className="type-label bg-green px-6 py-4 text-bone transition-colors hover:bg-teal"
             >
               Contactanos
             </button>
@@ -262,7 +261,7 @@ export default function Styleguide() {
                 className="flex flex-wrap items-baseline gap-x-4 border-b border-gray-deep/20 pb-3"
               >
                 <dt className="type-label w-52 text-bone">{item.token}</dt>
-                <dd className="type-code text-orange">{item.value}</dd>
+                <dd className="type-code text-green">{item.value}</dd>
                 <dd className="type-eyebrow text-gray-deep normal-case">
                   {item.use}
                 </dd>
