@@ -419,8 +419,10 @@
    --------------------------------------------------------------------------- */
 
 @layer components {
+  /* Desaturada y con más contraste, como en Framer: le da el tono frío. */
   .hero-photo {
     opacity: 1;
+    filter: brightness(0.92) contrast(1.08) saturate(0.55);
   }
 
   /* La grilla solo se ve durante la intro. */

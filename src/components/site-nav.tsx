@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { ButtonPrimary } from "@/components/button";
+import { LanguageMenu } from "@/components/language-menu";
 import { images } from "@/content/images";
 import { navCta, navLinks, sectionIds } from "@/content/site";
 
@@ -73,22 +74,22 @@ export function SiteNav() {
             ))}
           </ul>
 
-          <ButtonPrimary href={navCta.href} className="hidden tablet:inline-flex">
-            {navCta.label}
-          </ButtonPrimary>
+          <div className="flex items-center gap-2">
+            <LanguageMenu />
 
-          <button
-            type="button"
-            onClick={() => setOpen((value) => !value)}
-            aria-expanded={open}
-            aria-controls="menu-principal"
-            className="-mr-2.5 flex size-11 items-center justify-center text-ink tablet:hidden"
-          >
-            <span className="sr-only">
-              {open ? "Cerrar menú" : "Abrir menú"}
-            </span>
-            <MenuIcon open={open} />
-          </button>
+            <button
+              type="button"
+              onClick={() => setOpen((value) => !value)}
+              aria-expanded={open}
+              aria-controls="menu-principal"
+              className="-mr-2.5 flex size-11 items-center justify-center text-ink tablet:hidden"
+            >
+              <span className="sr-only">
+                {open ? "Cerrar menú" : "Abrir menú"}
+              </span>
+              <MenuIcon open={open} />
+            </button>
+          </div>
         </div>
       </nav>
 
