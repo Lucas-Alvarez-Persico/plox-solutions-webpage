@@ -1,11 +1,12 @@
 import { images } from "@/content/images";
 import { videos } from "@/content/videos";
+import type { Localized } from "@/lib/i18n";
 import type { Servicio } from "./tipos";
 
-export const xPando: Servicio = {
+const es: Servicio = {
   slug: "x-pando",
   nombreCorto: "X-Pando",
-  miniatura: images.miniaturaXpando,
+  miniatura: images.es.miniaturaXpando,
 
   cierre: "Una unión confiable empieza por elegir el compuesto adecuado.",
 
@@ -13,7 +14,7 @@ export const xPando: Servicio = {
   titulo: "X-PANDO",
   resumen:
     "Cemento expansivo para uniones industriales que, al mezclarse con agua y curar, genera una expansión leve y permanente que contribuye a obtener conexiones resistentes y herméticas.",
-  portada: images.portadaXpando,
+  portada: images.es.portadaXpando,
 
   historia: [
     {
@@ -128,3 +129,134 @@ export const xPando: Servicio = {
     ],
   },
 };
+
+const en: Servicio = {
+  slug: "x-pando",
+  nombreCorto: "X-Pando",
+  miniatura: images.en.miniaturaXpando,
+
+  cierre: "A reliable connection starts with choosing the right compound.",
+
+  eyebrow: "Union · Strength · Sealing",
+  titulo: "X-PANDO",
+  resumen:
+    "Expanding cement compound for industrial joints that, when mixed with water and cured, produces slight and permanent expansion, helping create strong and leak-tight connections.",
+  portada: images.en.portadaXpando,
+
+  historia: [
+    {
+      titulo: "A union that works with the seal",
+      cuerpo:
+        "Variations in pressure, temperature, and vibration can place significant demands on industrial joints. X-Pando uses a different principle from conventional compounds: during curing, it produces controlled expansion that fills irregularities in the joint and helps create a firm, durable seal.",
+    },
+    {
+      // En Framer dice "Prepare, apply, and heal".
+      titulo: "Prepare, apply, and cure",
+      cuerpo:
+        "X-Pando is supplied as a dry compound formulated from oxides and minerals. It is mixed with clean water immediately before application until the required consistency is achieved, applied to the joint, and then begins its curing process. For high-pressure applications, technical documentation indicates a curing period of 24 hours at room temperature.",
+    },
+  ],
+
+  tecnicas: {
+    encabezado: "A COMPOUND FOR DEMANDING CONDITIONS",
+    intro:
+      "X-Pando is a jointing cement designed for threaded and flanged connections. Unlike conventional thread grease or paste, it is prepared immediately before use and develops slight expansion during curing. This characteristic allows the material to fill irregularities between surfaces and contribute to sealing the connection.",
+    video: videos.xpando,
+    bloques: [
+      {
+        titulo: "How it works",
+        cuerpos: [
+          "The product is mixed with clean water immediately before use. Once prepared, it is applied to the surfaces that will form the joint.",
+          "During curing, the compound undergoes slight and permanent expansion, which can reach up to 1 mm, according to the reference technical documentation. This expansion fills gaps and irregularities and generates pressure between the contact surfaces.",
+          "Once cured, the material becomes part of the joint and contributes to maintaining its tightness under service conditions.",
+        ],
+      },
+      {
+        titulo: "Application",
+        cuerpos: [
+          "The procedure consists of three main stages:",
+          {
+            etiqueta: "Preparation",
+            texto:
+              "The dry compound is mixed with clean water immediately before use, preparing only the amount required for the application.",
+          },
+          {
+            etiqueta: "Application",
+            texto:
+              "The mixture is distributed over the joint surfaces, including the threads in threaded connections, before the components are assembled.",
+          },
+          {
+            etiqueta: "Curing",
+            texto:
+              "Once the connection has been assembled, the material is allowed to cure. For high-pressure conditions, technical documentation indicates 24 hours of curing at room temperature before the connection is placed into service.",
+          },
+        ],
+      },
+      {
+        titulo: "Materials & kinds of unions",
+        cuerpos: [
+          "X-Pando can be used in threaded or flanged connections and on a range of materials commonly used in industrial installations.",
+          "These include iron, steel, bronze, stainless steel, copper, and certain plastics.",
+          "Its use is not recommended on anodized aluminum, as the product may cause discoloration on this material.",
+        ],
+      },
+      {
+        titulo: "Service conditions",
+        cuerpos: [
+          "Reference technical documentation indicates applications of up to:",
+          { etiqueta: "350 kg/cm²", texto: "Maximum indicated pressure." },
+          { etiqueta: "700 °C", texto: "Maximum indicated temperature." },
+          { etiqueta: "Up to 1 mm", texto: "Expansion during curing." },
+          "These values correspond to the product's indicated capabilities. Compatibility and application conditions must be evaluated according to the specific characteristics of each installation.",
+        ],
+      },
+      {
+        // En Framer dice "Union strenght".
+        titulo: "Union strength",
+        cuerpos: [
+          "Once cured, X-Pando is designed to maintain sealing performance under varying conditions of pressure, temperature, vibration, and deflection.",
+          "Its expansion can also help compensate for certain imperfections in threads or joint surfaces, increasing contact between the components.",
+          "Product documentation also indicates that the compound can cure under vacuum conditions.",
+        ],
+      },
+      {
+        titulo: "Fluid compatibility",
+        cuerpos: [
+          "X-Pando is indicated for use with a wide range of media found in industrial installations, including water, steam, gasoline, petroleum-derived oils, hydrocarbons, carbon dioxide, oxygen, nitrogen, helium, and certain refrigerants, among others.",
+          "It is also indicated for potable water installations.",
+          "However, limitations exist with certain strong acids, including sulfuric, hydrochloric, acetic, and phosphoric acids. Chemical compatibility should therefore be verified according to the specific application.",
+        ],
+      },
+      {
+        titulo: "Safety & composition",
+        cuerpos: [
+          "According to the product's technical information, X-Pando is formulated without lead or asbestos, is non-combustible, and does not generate hazardous gases during application or heating.",
+          "The compound is also odorless and tasteless, a relevant characteristic for certain applications.",
+        ],
+      },
+      {
+        titulo: "Performance",
+        cuerpos: [
+          "Because the product is supplied dry and prepared only in the quantity required for each job, material waste is reduced.",
+          "Product documentation indicates a weight yield approximately 4 to 6 times greater than that of conventional jointing compounds.",
+        ],
+      },
+      {
+        titulo: "Disassembly",
+        cuerpos: [
+          "The expansion generated during curing does not mean that the connection can never be disassembled.",
+          "When separation of the components is required, product documentation indicates that the joint can be released by applying force while lightly tapping the fitting.",
+        ],
+      },
+      {
+        titulo: "Industrial applications",
+        cuerpos: [
+          "X-Pando can be used in connections found in gas generators, diesel engines, superheaters, condensers, pumps, gauges, valves, and burner piping, among other equipment.",
+          "It also covers specific applications such as repairing certain types of porosity or cracks in low-pressure components and securing anchor bolts to metal or concrete.",
+        ],
+      },
+    ],
+  },
+};
+
+export const xPando: Localized<Servicio> = { es, en };

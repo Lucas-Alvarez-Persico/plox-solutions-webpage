@@ -209,13 +209,13 @@ export default function Styleguide() {
           <div className="grid grid-cols-1 gap-8 tablet:grid-cols-2">
             {(
               [
-                ["logo", images.logo],
-                ["hero", images.hero],
-                ["servicioSellado", images.servicioSellado],
-                ["servicioValvulas", images.servicioValvulas],
-                ["servicioXpando", images.servicioXpando],
-                ["textura1", images.textura1],
-                ["textura2", images.textura2],
+                ["logo", images.es.logo],
+                ["hero", images.es.hero],
+                ["servicioSellado", images.es.servicioSellado],
+                ["servicioValvulas", images.es.servicioValvulas],
+                ["servicioXpando", images.es.servicioXpando],
+                ["textura1", images.es.textura1],
+                ["textura2", images.es.textura2],
               ] as const
             ).map(([key, image]) => (
               <figure key={key}>

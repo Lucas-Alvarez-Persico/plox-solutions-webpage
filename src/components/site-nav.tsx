@@ -7,13 +7,16 @@ import { useEffect, useState } from "react";
 import { ButtonPrimary } from "@/components/button";
 import { LanguageMenu } from "@/components/language-menu";
 import { images } from "@/content/images";
-import { navCta, navLinks, sectionIds } from "@/content/site";
+import { sectionHref, sectionIds, siteContent } from "@/content/site";
+import type { Locale } from "@/lib/i18n";
 
 /**
  * Barra de navegación sticky. En desktop y tablet muestra los enlaces en línea;
  * por debajo de 810px pasa a un botón de menú con panel desplegable.
  */
-export function SiteNav() {
+export function SiteNav({ locale }: { locale: Locale }) {
+  const { navLinks, navCta, ui } = siteContent[locale];
+  const logo = images[locale].logo;
   const [open, setOpen] = useState(false);
 
   // Bloquea el scroll del documento mientras el panel está abierto.
@@ -43,17 +46,17 @@ export function SiteNav() {
   return (
     <header className="sticky top-0 z-[5] bg-white">
       <nav
-        aria-label="Principal"
+        aria-label={ui.mainNav}
         className="section-x flex h-16 items-center tablet:h-18"
       >
         <div className="container-site flex h-11 items-center justify-between tablet:h-12">
           <Link
-            href={`/#${sectionIds.hero}`}
+            href={sectionHref(locale, sectionIds.hero)}
             className="flex items-center"
-            aria-label={`${images.logo.alt} — ir al inicio`}
+            aria-label={`${logo.alt} — ${ui.goHome}`}
           >
             <Image
-              src={images.logo.src}
+              src={logo.src}
               alt=""
               priority
               className="h-11 w-auto"
@@ -75,7 +78,7 @@ export function SiteNav() {
           </ul>
 
           <div className="flex items-center gap-2">
-            <LanguageMenu />
+            <LanguageMenu locale={locale} label={ui.language} />
 
             <button
               type="button"
@@ -85,7 +88,7 @@ export function SiteNav() {
               className="-mr-2.5 flex size-11 items-center justify-center text-ink tablet:hidden"
             >
               <span className="sr-only">
-                {open ? "Cerrar menú" : "Abrir menú"}
+                {open ? ui.closeMenu : ui.openMenu}
               </span>
               <MenuIcon open={open} />
             </button>

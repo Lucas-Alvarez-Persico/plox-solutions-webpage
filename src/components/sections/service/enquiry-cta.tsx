@@ -1,6 +1,7 @@
 import { ButtonPrimary } from "@/components/button";
-import { sectionIds } from "@/content/site";
+import { sectionHref, sectionIds, siteContent } from "@/content/site";
 import type { Servicio } from "@/content/servicios/tipos";
+import type { Locale } from "@/lib/i18n";
 
 /**
  * P-07 · Enquiry — el cierre de la página, con un botón que lleva al
@@ -8,7 +9,13 @@ import type { Servicio } from "@/content/servicios/tipos";
  *
  * El título va fijo en 64px en los tres breakpoints, como en el original.
  */
-export function EnquiryCta({ servicio }: { servicio: Servicio }) {
+export function EnquiryCta({
+  servicio,
+  locale,
+}: {
+  servicio: Servicio;
+  locale: Locale;
+}) {
   return (
     <section
       id="p-07-enquiry"
@@ -20,8 +27,8 @@ export function EnquiryCta({ servicio }: { servicio: Servicio }) {
         </h2>
 
         <div>
-          <ButtonPrimary href={`/#${sectionIds.enquiry}`}>
-            Contactanos
+          <ButtonPrimary href={sectionHref(locale, sectionIds.enquiry)}>
+            {siteContent[locale].ui.contactCta}
           </ButtonPrimary>
         </div>
       </div>

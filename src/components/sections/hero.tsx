@@ -2,15 +2,14 @@ import Image from "next/image";
 
 import { ButtonPrimary } from "@/components/button";
 import { LineworkLayer } from "@/components/linework-layer";
-import { hero } from "@/content/home";
-import { images } from "@/content/images";
+import type { HomeContent } from "@/content/home";
 import { sectionIds } from "@/content/site";
 
 /** Degradado que oscurece la foto para que el texto tenga contraste. */
 const SCRIM =
   "linear-gradient(rgba(22, 24, 26, 0.78) 0%, rgba(22, 24, 26, 0.55) 45%, rgba(22, 24, 26, 0.92) 100%)";
 
-export function Hero() {
+export function Hero({ content: hero }: { content: HomeContent["hero"] }) {
   return (
     <section
       id={sectionIds.hero}
@@ -18,8 +17,8 @@ export function Hero() {
     >
       <div className="hero-photo absolute inset-0">
         <Image
-          src={images.hero.src}
-          alt={images.hero.alt}
+          src={hero.image.src}
+          alt={hero.image.alt}
           fill
           priority
           sizes="100vw"

@@ -1,19 +1,21 @@
 import { images } from "@/content/images";
 import { videos } from "@/content/videos";
+import type { Localized } from "@/lib/i18n";
 import type { Servicio } from "./tipos";
 
-export const calibracionDeValvulas: Servicio = {
+const es: Servicio = {
   slug: "calibracion-de-valvulas",
   nombreCorto: "Calibración de Válvulas",
-  miniatura: images.miniaturaValvulas,
+  miniatura: images.es.miniaturaValvulas,
 
-  cierre: "La seguridad de una instalación también depende de medir con precisión.",
+  cierre:
+    "La seguridad de una instalación también depende de medir con precisión.",
 
   eyebrow: "Control · Precisión · Seguridad",
   titulo: "CALIBRACIÓN DE VÁLVULAS DE SEGURIDAD",
   resumen:
     "Comprobación y ajuste de válvulas directamente sobre la instalación, mediante un sistema de medición que permite verificar su presión de apertura y comportamiento.",
-  portada: images.portadaValvulas,
+  portada: images.es.portadaValvulas,
 
   historia: [
     {
@@ -121,3 +123,125 @@ export const calibracionDeValvulas: Servicio = {
     ],
   },
 };
+
+const en: Servicio = {
+  slug: "calibracion-de-valvulas",
+  nombreCorto: "Safety Valve Calibration",
+  miniatura: images.en.miniaturaValvulas,
+
+  cierre: "The safety of an installation also depends on precise measurement.",
+
+  eyebrow: "Control · Precision · Safety",
+  titulo: "SAFETY VALVE CALIBRATION",
+  resumen:
+    "Testing and adjustment of valves directly on the installation, using a measurement system that allows their set pressure and operating behavior to be verified.",
+  portada: images.en.portadaValvulas,
+
+  historia: [
+    {
+      titulo: "Safety under control",
+      cuerpo:
+        "Safety valves are critical components for protecting an installation. Accurately verifying their set pressure makes it possible to detect deviations and determine whether adjustment or maintenance is required, avoiding unnecessary removal and obtaining precise information about their performance.",
+    },
+    {
+      titulo: "Direct measurement on the installation",
+      cuerpo:
+        "On-site calibration uses an electromechanical system that applies a controlled force to the valve stem and records its response. Based on the applied force, line pressure, and valve characteristics, its set pressure can be determined and the necessary adjustments can be made directly on the installation.",
+    },
+  ],
+
+  tecnicas: {
+    encabezado: "PRECISION APPLIED TO EVERY VALVE",
+    intro:
+      "On-site calibration allows the performance of safety and relief valves to be verified directly in their operating position. The system combines mechanical, hydraulic, and electronic components to apply a known force and accurately record the point at which the valve opens.",
+    video: videos.valvulas,
+    bloques: [
+      {
+        titulo: "How it works",
+        cuerpos: [
+          "A hydraulic unit generates a controlled force on the valve stem. This force is measured by a transducer and electronically recorded throughout the test.",
+          "By knowing the valve seat area and the pressure present in the line, the data obtained can be used to calculate the pressure at which the valve opens.",
+          "The process makes it possible to determine the set pressure, spring tension adjustment, and valve lift.",
+        ],
+      },
+      {
+        titulo: "Hot testing",
+        cuerpos: [
+          "Hot testing is carried out with the valve installed and under the system's normal operating conditions.",
+          "This makes it possible to verify valve performance without having to increase boiler or system pressure solely to cause the valve to open. The installation can remain operational while the test is performed.",
+          "Reference technical documentation indicates a correlation with the actual set pressure of ±1%.",
+        ],
+      },
+      {
+        titulo: "Results recording",
+        cuerpos: [
+          "During the test, both the applied force and line pressure can be recorded, generating a dated graph documenting the valve's behavior.",
+          "Valve lift can also be recorded, providing additional information for evaluation and creating a permanent record for the maintenance history.",
+        ],
+      },
+      {
+        titulo: "Adjustment on the installation",
+        cuerpos: [
+          "One of the main advantages of the procedure is the ability to test and adjust valves without initially removing them from the system.",
+          "This makes it possible to identify which valves actually require inspection or repair, reducing unnecessary removal and maintenance work. Welded valves can also be tested and adjusted without removing them from the installation.",
+        ],
+      },
+      {
+        // Mismo cruce que en la versión en español (ver arriba): en Framer este
+        // bloque lleva el texto de las cajas de inyección y el siguiente,
+        // titulado "Injection enclosures and clamps", lleva este.
+        titulo: "Cold testing",
+        cuerpos: [
+          "The system also allows testing when there is no pressure in the line.",
+          "Before testing, a calculation based on the geometry and material of the valve stem is performed to establish safe test conditions. The set pressure, spring adjustment, and valve lift can then be determined.",
+          "This method can be used to test valves in a new installation before commissioning or during a shutdown to identify which valves require maintenance.",
+        ],
+      },
+      {
+        titulo: "System components",
+        cuerpos: [
+          "The equipment combines three systems working together:",
+          {
+            etiqueta: "Mechanical system",
+            texto:
+              "An adjustable structure allows the hydraulic cylinders and load cell to be mounted directly onto the valve.",
+          },
+          {
+            etiqueta: "Hydraulic system",
+            texto:
+              "Generates the additional force required to cause the valve to open in a controlled manner.",
+          },
+          {
+            etiqueta: "Electronic system",
+            texto:
+              "Records the force applied during the test and documents the results obtained.",
+          },
+        ],
+      },
+      {
+        titulo: "Equipment calibration",
+        cuerpos: [
+          "The measurement equipment is calibrated according to national standards, with a calibration check performed before each final valve test.",
+          "The result of this check can be incorporated into the final graph, providing traceability for the recorded results.",
+        ],
+      },
+      {
+        titulo: "Advantages of on-site calibration",
+        cuerpos: [
+          "By testing directly on the installation and, where applicable, under normal operating conditions, the need to remove components solely to verify their condition is reduced.",
+          "The procedure helps reduce production interruptions, avoid unnecessary pressure increases during testing, shorten maintenance times, and generate permanent records for each test.",
+          "In addition, because hot testing is performed at the normal operating temperature, it eliminates the need for subsequent temperature compensation.",
+        ],
+      },
+      {
+        titulo: "Applications",
+        cuerpos: [
+          "The system is designed for the testing and adjustment of safety valves and relief valves, both during facility operation and during commissioning, maintenance, or scheduled shutdowns.",
+          "The testing method and conditions are determined according to the characteristics of the valve and installation.",
+        ],
+      },
+    ],
+  },
+};
+
+export const calibracionDeValvulas: Localized<Servicio> = { es, en };

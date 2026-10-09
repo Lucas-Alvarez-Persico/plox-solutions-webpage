@@ -16,6 +16,8 @@ interface Payload {
   phone?: string;
   location?: string;
   details?: string;
+  /** Idioma de la página desde la que se envió la consulta. */
+  locale?: string;
   /** Honeypot: lo completan los bots, nunca una persona. */
   website?: string;
 }
@@ -47,6 +49,7 @@ export async function POST(request: Request) {
     phone: payload.phone?.trim() ?? "",
     location: payload.location?.trim() ?? "",
     details: payload.details?.trim() ?? "",
+    locale: payload.locale === "en" ? "en" : "es",
     receivedAt: new Date().toISOString(),
   };
 

@@ -1,11 +1,15 @@
-import { record } from "@/content/home";
+import type { HomeContent } from "@/content/home";
 import { sectionIds } from "@/content/site";
 
 /**
  * A-02 · Record — el bloque de trayectoria sobre fondo oscuro, con el título,
  * los dos párrafos y la fila de atributos ("En cada operación").
  */
-export function Record() {
+export function Record({
+  content: record,
+}: {
+  content: HomeContent["record"];
+}) {
   return (
     <section
       id={sectionIds.record}

@@ -7,7 +7,10 @@ import { images, type SiteImage } from "./images";
  */
 export interface SiteVideo {
   src: string;
-  /** Primer fotograma: se muestra hasta que el visitante llega a la sección. */
+  /**
+   * Primer fotograma: se muestra hasta que el visitante llega a la sección. Es
+   * decorativo, así que da lo mismo el idioma.
+   */
   poster: SiteImage;
   width: number;
   height: number;
@@ -16,19 +19,19 @@ export interface SiteVideo {
 export const videos = {
   sellado: {
     src: "/videos/sellado.mp4",
-    poster: images.posterSellado,
+    poster: images.es.posterSellado,
     width: 1280,
     height: 1280,
   },
   valvulas: {
     src: "/videos/valvulas.mp4",
-    poster: images.posterValvulas,
+    poster: images.es.posterValvulas,
     width: 720,
     height: 720,
   },
   xpando: {
     src: "/videos/xpando.mp4",
-    poster: images.posterXpando,
+    poster: images.es.posterXpando,
     width: 720,
     height: 720,
   },

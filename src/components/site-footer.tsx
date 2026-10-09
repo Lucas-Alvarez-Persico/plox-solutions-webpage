@@ -2,23 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { images } from "@/content/images";
-import { companyName, footerColumns } from "@/content/site";
+import { companyName, siteContent } from "@/content/site";
+import type { Locale } from "@/lib/i18n";
 
-export function SiteFooter() {
+export function SiteFooter({ locale }: { locale: Locale }) {
+  const { footerColumns, ui } = siteContent[locale];
   const year = new Date().getFullYear();
 
   return (
     <footer className="section-x relative overflow-hidden bg-bone pt-16 pb-8 tablet:pt-24 tablet:pb-10 desktop:pt-30 desktop:pb-12">
       <Image
-        src={images.textura2.src}
-        alt={images.textura2.alt}
+        src={images[locale].textura2.src}
+        alt=""
         fill
         className="pointer-events-none object-cover opacity-10"
         sizes="100vw"
       />
 
       <div className="container-site relative flex flex-col gap-16 desktop:gap-20">
-        <nav data-reveal aria-label="Pie de página">
+        <nav data-reveal aria-label={ui.footerNav}>
           <div className="grid grid-cols-2 gap-8 desktop:grid-cols-4 desktop:gap-10">
             {footerColumns.map((column) => (
               <div key={column.heading} className="flex flex-col gap-4">
@@ -41,7 +43,7 @@ export function SiteFooter() {
         </nav>
 
         <Image
-          src={images.logo.src}
+          src={images[locale].logo.src}
           alt=""
           className="h-auto w-full"
           sizes="(min-width: 1200px) 1280px, 100vw"

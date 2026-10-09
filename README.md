@@ -40,10 +40,18 @@ Copiá `.env.example` a `.env.local` y completá los valores.
 
 ```
 src/
-  app/          Rutas y layouts (App Router)
+  app/          Rutas y layouts (App Router): `(es)/` español, `en/` inglés
   components/   Componentes de UI
   content/      Textos y datos del sitio (contenido hardcodeado)
   lib/          Utilidades
 public/
   images/       Imágenes y assets estáticos
 ```
+
+## Idiomas
+
+El sitio está en español (sin prefijo: `/`, `/x-pando`) y en inglés (bajo `/en`: `/en`, `/en/x-pando`). Las rutas son las mismas en los dos idiomas.
+
+- Los textos de cada idioma viven juntos en `src/content/`: cada archivo exporta un objeto `{ es, en }`, así es fácil mantenerlos a la par.
+- Cada idioma tiene su propio root layout (`app/(es)/layout.tsx` y `app/en/layout.tsx`) para que el `<html lang>` sea el correcto. Ambos usan `SiteShell`.
+- Para agregar una página, creá la ruta en las dos carpetas.

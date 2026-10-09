@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 
+import {
+  languageAlternates,
+  localizePath,
+  ogLocales,
+  type Locale,
+} from "@/lib/i18n";
 import { siteName } from "@/lib/site-config";
 import type { Servicio } from "./tipos";
 
@@ -10,9 +16,13 @@ import type { Servicio } from "./tipos";
  * va todo en mayúsculas y quedaría gritado en la pestaña y en los resultados de
  * búsqueda.
  */
-export function metadataDeServicio(servicio: Servicio): Metadata {
+export function metadataDeServicio(
+  servicio: Servicio,
+  locale: Locale,
+): Metadata {
   const titulo = `${servicio.nombreCorto} — ${siteName}`;
-  const ruta = `/${servicio.slug}`;
+  const rutaBase = `/${servicio.slug}`;
+  const ruta = localizePath(locale, rutaBase);
 
   const imagen = {
     url: servicio.portada.src.src,
@@ -24,10 +34,13 @@ export function metadataDeServicio(servicio: Servicio): Metadata {
   return {
     title: servicio.nombreCorto,
     description: servicio.resumen,
-    alternates: { canonical: ruta },
+    alternates: {
+      canonical: ruta,
+      languages: languageAlternates(rutaBase),
+    },
     openGraph: {
       type: "article",
-      locale: "es_AR",
+      locale: ogLocales[locale],
       url: ruta,
       siteName,
       title: titulo,

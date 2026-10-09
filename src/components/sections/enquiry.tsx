@@ -2,8 +2,9 @@
 
 import { useId, useState } from "react";
 
-import { enquiry } from "@/content/home";
+import type { EnquiryContent } from "@/content/home";
 import { sectionIds } from "@/content/site";
+import type { Locale } from "@/lib/i18n";
 
 type Status = "idle" | "sending" | "success" | "error" | "notConfigured";
 
@@ -13,7 +14,13 @@ const FIELD_SHELL =
 const CONTROL =
   "type-body-l w-full bg-transparent text-bone placeholder:text-gray-deep focus:outline-none";
 
-export function Enquiry() {
+export function Enquiry({
+  content: enquiry,
+  locale,
+}: {
+  content: EnquiryContent;
+  locale: Locale;
+}) {
   const formId = useId();
   const [status, setStatus] = useState<Status>("idle");
   const [invalid, setInvalid] = useState<string[]>([]);
@@ -61,7 +68,8 @@ export function Enquiry() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        // El idioma viaja con la consulta para saber en cuál responder.
+        body: JSON.stringify({ ...data, locale }),
       });
 
       if (response.ok) {

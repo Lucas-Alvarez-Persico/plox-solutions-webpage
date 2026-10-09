@@ -2,8 +2,8 @@ import Image from "next/image";
 
 import { ServicePanel } from "@/components/sections/service-panel";
 import { StageList } from "@/components/sections/stage-list";
+import type { HomeContent } from "@/content/home";
 import { images } from "@/content/images";
-import { method } from "@/content/home";
 import { sectionIds } from "@/content/site";
 
 /**
@@ -12,15 +12,19 @@ import { sectionIds } from "@/content/site";
  * paneles de cada servicio. Por debajo de 810px las columnas se apilan y el
  * índice se oculta, igual que en el diseño original.
  */
-export function Method() {
+export function Method({
+  content: method,
+}: {
+  content: HomeContent["method"];
+}) {
   return (
     <section
       id={sectionIds.method}
       className="section-x relative scroll-mt-18 overflow-clip bg-bone py-16 tablet:py-24 desktop:py-40"
     >
       <Image
-        src={images.textura1.src}
-        alt={images.textura1.alt}
+        src={images.es.textura1.src}
+        alt=""
         fill
         sizes="100vw"
         className="pointer-events-none object-cover opacity-[0.06]"
