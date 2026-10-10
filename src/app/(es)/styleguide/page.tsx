@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { LineworkLayer } from "@/components/linework-layer";
 import { images } from "@/content/images";
 
 export const metadata: Metadata = {
@@ -239,18 +238,6 @@ export default function Styleguide() {
               </figure>
             ))}
           </div>
-
-          <figure className="mt-8">
-            <div className="relative aspect-video overflow-hidden border border-gray-deep/40 bg-bone">
-              <LineworkLayer className="absolute inset-0 text-blueprint" />
-            </div>
-            <figcaption className="mt-3">
-              <p className="type-label text-bone">LineworkLayer</p>
-              <p className="type-code mt-1 text-gray-deep">
-                SVG inline · viewBox 1200×700 · currentColor
-              </p>
-            </figcaption>
-          </figure>
         </Section>
 
         <Section title="Layout">

@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { ButtonPrimary } from "@/components/button";
-import { LineworkLayer } from "@/components/linework-layer";
 import type { HomeContent } from "@/content/home";
 import { sectionIds } from "@/content/site";
 
@@ -31,10 +30,6 @@ export function Hero({ content: hero }: { content: HomeContent["hero"] }) {
         className="absolute inset-0 opacity-80"
         style={{ backgroundImage: SCRIM }}
       />
-
-      <div className="hero-linework absolute inset-0">
-        <LineworkLayer className="h-full w-full text-blueprint" />
-      </div>
 
       <div className="container-site relative flex flex-col gap-6 tablet:gap-8 desktop:gap-10">
         <p className="hero-in hero-in-eyebrow type-eyebrow text-gray">

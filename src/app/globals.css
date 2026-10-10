@@ -31,7 +31,6 @@
   --color-teal: #012a36;
   /* Negro de los cuerpos de texto sobre fondo claro. */
   --color-ink-black: #16181a;
-  --color-blueprint: #7fa8c4;
 
   /* Familias tipográficas */
   --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
@@ -409,13 +408,13 @@
 
 /* ---------------------------------------------------------------------------
    Intro del hero
-   Reconstruida del sitio original: un reloj de 1800ms que arranca al cargar.
-   La grilla azul entra y se va (el "flash"), y la foto aparece detrás mientras
-   se asienta desde una escala levemente mayor.
+   Reconstruida del sitio original: un reloj de 1800ms que arranca al cargar,
+   en el que la foto aparece mientras se asienta desde una escala levemente
+   mayor. El original además hacía entrar y salir una grilla azul por encima;
+   acá se sacó a propósito.
 
    Solo corre desde 810px y sin movimiento reducido, igual que el original. Si
-   no corre, el estado por defecto ya es el final: foto visible y grilla
-   invisible.
+   no corre, el estado por defecto ya es el final: la foto visible.
    --------------------------------------------------------------------------- */
 
 @layer components {
@@ -425,19 +424,10 @@
     filter: brightness(0.92) contrast(1.08) saturate(0.55);
   }
 
-  /* La grilla solo se ve durante la intro. */
-  .hero-linework {
-    opacity: 0;
-  }
-
   @media (min-width: 810px) {
     @media (prefers-reduced-motion: no-preference) {
       .hero-photo {
         animation: hero-photo-in 1800ms linear both;
-      }
-
-      .hero-linework {
-        animation: hero-linework-flash 1800ms linear both;
       }
     }
   }
@@ -453,19 +443,6 @@
   100% {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes hero-linework-flash {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  85%,
-  100% {
-    opacity: 0;
   }
 }
 
