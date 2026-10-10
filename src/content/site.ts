@@ -21,6 +21,8 @@ export const sectionIds = {
 export interface NavLink {
   label: string;
   href: string;
+  /** Subenlaces: en el nav se muestran en un desplegable. */
+  children?: NavLink[];
 }
 
 export interface FooterColumn {
@@ -53,6 +55,24 @@ export function sectionHref(locale: Locale, id: string) {
   return localizePath(locale, `/#${id}`);
 }
 
+/**
+ * Páginas de servicio. Las comparten el desplegable de "Servicios" del nav y
+ * la columna de servicios del footer.
+ */
+const serviceLinks: Localized<NavLink[]> = {
+  es: [
+    { label: "Sellado de Fugas", href: "/sellado-de-fuga" },
+    { label: "Calibración de Válvulas", href: "/calibracion-de-valvulas" },
+    { label: "X-Pando", href: "/x-pando" },
+  ],
+  // En el desplegable de Framer en inglés los nombres quedaron en español.
+  en: [
+    { label: "Online Leak Sealing", href: "/en/sellado-de-fuga" },
+    { label: "Safety Valve Calibration", href: "/en/calibracion-de-valvulas" },
+    { label: "X-Pando", href: "/en/x-pando" },
+  ],
+};
+
 function socialLinks(): NavLink[] {
   // PENDIENTE: en el sitio de Framer estos enlaces apuntan a las cuentas de
   // "northfield", la empresa de la plantilla original. Se dejan sin destino
@@ -69,7 +89,11 @@ export const siteContent: Localized<SiteContent> = {
     navLinks: [
       { label: "Inicio", href: sectionHref("es", sectionIds.hero) },
       { label: "Nosotros", href: sectionHref("es", sectionIds.record) },
-      { label: "Servicio", href: sectionHref("es", sectionIds.method) },
+      {
+        label: "Servicio",
+        href: sectionHref("es", sectionIds.method),
+        children: serviceLinks.es,
+      },
       { label: "Contacto", href: sectionHref("es", sectionIds.enquiry) },
     ],
     navCta: {
@@ -89,17 +113,7 @@ export const siteContent: Localized<SiteContent> = {
           { label: "Contacto", href: sectionHref("es", sectionIds.enquiry) },
         ],
       },
-      {
-        heading: "Servicios",
-        links: [
-          { label: "Sellado de Fugas", href: "/sellado-de-fuga" },
-          {
-            label: "Calibración de Válvulas",
-            href: "/calibracion-de-valvulas",
-          },
-          { label: "X-Pando", href: "/x-pando" },
-        ],
-      },
+      { heading: "Servicios", links: serviceLinks.es },
       { heading: "Donde encontrarnos", links: socialLinks() },
     ],
     ui: {
@@ -119,7 +133,11 @@ export const siteContent: Localized<SiteContent> = {
     navLinks: [
       { label: "Home", href: sectionHref("en", sectionIds.hero) },
       { label: "About Us", href: sectionHref("en", sectionIds.record) },
-      { label: "Services", href: sectionHref("en", sectionIds.method) },
+      {
+        label: "Services",
+        href: sectionHref("en", sectionIds.method),
+        children: serviceLinks.en,
+      },
       { label: "Contact Us", href: sectionHref("en", sectionIds.enquiry) },
     ],
     navCta: {
@@ -136,17 +154,7 @@ export const siteContent: Localized<SiteContent> = {
           { label: "Contact Us", href: sectionHref("en", sectionIds.enquiry) },
         ],
       },
-      {
-        heading: "Services",
-        links: [
-          { label: "Online Leak Sealing", href: "/en/sellado-de-fuga" },
-          {
-            label: "Safety Valve Calibration",
-            href: "/en/calibracion-de-valvulas",
-          },
-          { label: "X-Pando", href: "/en/x-pando" },
-        ],
-      },
+      { heading: "Services", links: serviceLinks.en },
       // En Framer dice "Where can you find us".
       { heading: "Where to find us", links: socialLinks() },
     ],
