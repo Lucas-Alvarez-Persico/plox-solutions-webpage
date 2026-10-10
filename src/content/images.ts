@@ -63,7 +63,7 @@ const alts: Localized<Partial<Record<ImageKey, string>>> = {
     servicioSellado:
       "Esquema isométrico de un sellado de fuga: una abrazadera inyectada con sellante sobre la junta bridada de una cañería, alimentada por una bomba manual con manómetro.",
     servicioValvulas:
-      "Esquema isométrico de una calibración de válvulas: una válvula de globo con posicionador conectada a un calibrador portátil que indica 45,2 % de posición.",
+      "Esquema isométrico de una calibración de válvulas en la instalación: un bastidor con cilindros hidráulicos montado sobre una válvula de seguridad bridada, conectado a una unidad hidráulica con manómetro y a un monitor que grafica la prueba.",
     servicioXpando:
       "Esquema isométrico del sistema X-Pando: vista en corte de una unión roscada sellada con cemento expansivo, con detalle ampliado del filete.",
     portadaSellado:
@@ -79,7 +79,7 @@ const alts: Localized<Partial<Record<ImageKey, string>>> = {
     servicioSellado:
       "Isometric diagram of a leak sealing job: a clamp injected with sealant over a flanged pipe joint, fed by a hand pump with a pressure gauge.",
     servicioValvulas:
-      "Isometric diagram of a valve calibration: a globe valve with a positioner connected to a portable calibrator reading 45.2% position.",
+      "Isometric diagram of an on-site valve calibration: a frame with hydraulic cylinders mounted on a flanged safety valve, connected to a hydraulic unit with a pressure gauge and to a monitor plotting the test.",
     servicioXpando:
       "Isometric diagram of the X-Pando system: cutaway view of a threaded joint sealed with expanding cement, with an enlarged detail of the thread.",
     portadaSellado:

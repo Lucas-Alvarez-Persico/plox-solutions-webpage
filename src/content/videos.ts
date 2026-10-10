@@ -32,7 +32,7 @@ export const videos = {
   xpando: {
     src: "/videos/xpando.mp4",
     poster: images.es.posterXpando,
-    width: 720,
-    height: 720,
+    width: 1920,
+    height: 1080,
   },
 } as const satisfies Record<string, SiteVideo>;
