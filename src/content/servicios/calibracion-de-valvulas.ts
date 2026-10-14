@@ -16,6 +16,7 @@ const es: Servicio = {
   resumen:
     "Comprobación y ajuste de válvulas directamente sobre la instalación, mediante un sistema de medición que permite verificar su presión de apertura y comportamiento.",
   portada: images.es.portadaValvulas,
+  portadaAjuste: { saturacion: 0.5 },
 
   historia: [
     {
@@ -49,7 +50,13 @@ const es: Servicio = {
         cuerpos: [
           "La prueba en caliente se realiza con la válvula instalada y bajo las condiciones normales de funcionamiento del sistema.",
           "Esto permite comprobar su comportamiento sin necesidad de elevar la presión de la caldera o del sistema únicamente para provocar la apertura de la válvula. La instalación puede continuar operativa mientras se realiza la comprobación.",
-          "La documentación técnica de referencia indica una correspondencia de los resultados con la presión real de apertura de ±1 %.",
+          {
+            partes: [
+              "La documentación técnica de referencia indica una correspondencia de los resultados con la presión real de apertura de ",
+              { negrita: "±1 %" },
+              ".",
+            ],
+          },
         ],
       },
       {
@@ -136,6 +143,7 @@ const en: Servicio = {
   resumen:
     "Testing and adjustment of valves directly on the installation, using a measurement system that allows their set pressure and operating behavior to be verified.",
   portada: images.en.portadaValvulas,
+  portadaAjuste: { saturacion: 0.5 },
 
   historia: [
     {
@@ -169,7 +177,13 @@ const en: Servicio = {
         cuerpos: [
           "Hot testing is carried out with the valve installed and under the system's normal operating conditions.",
           "This makes it possible to verify valve performance without having to increase boiler or system pressure solely to cause the valve to open. The installation can remain operational while the test is performed.",
-          "Reference technical documentation indicates a correlation with the actual set pressure of ±1%.",
+          {
+            partes: [
+              "Reference technical documentation indicates a correlation with the actual set pressure of ",
+              { negrita: "±1%" },
+              ".",
+            ],
+          },
         ],
       },
       {

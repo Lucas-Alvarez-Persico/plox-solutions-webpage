@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-17 -72.5 534 534">
+  <!--
+    La X del logo. En pestañas oscuras la mitad petróleo se pierde contra el
+    fondo, así que con el esquema oscuro pasa a hueso.
+  -->
+  <style>
+    .petroleo { fill: #002935; }
+    @media (prefers-color-scheme: dark) {
+      .petroleo { fill: #f4f3f0; }
+    }
+  </style>
+  <path fill="#92c83e" d="M407.2 1H499.3L304.2 184.7 432.2 303H331.9L212 186.4Z"/>
+  <path class="petroleo" d="M89.4 74H188.1L303.7 185.2 88.9 388H0.4L211.9 186.9Z"/>
+</svg>

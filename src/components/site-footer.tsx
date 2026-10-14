@@ -9,6 +9,15 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   const { footerColumns, ui } = siteContent[locale];
   const year = new Date().getFullYear();
 
+  // Se omiten los enlaces sin destino y las columnas que quedan vacías: así las
+  // redes aparecen solas cuando se cargan sus cuentas.
+  const columns = footerColumns
+    .map((column) => ({
+      ...column,
+      links: column.links.filter((link) => link.href),
+    }))
+    .filter((column) => column.links.length > 0);
+
   return (
     <footer className="section-x relative overflow-hidden bg-bone pt-16 pb-8 tablet:pt-24 tablet:pb-10 desktop:pt-30 desktop:pb-12">
       <Image
@@ -22,7 +31,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       <div className="container-site relative flex flex-col gap-16 desktop:gap-20">
         <nav data-reveal aria-label={ui.footerNav}>
           <div className="grid grid-cols-2 gap-8 desktop:grid-cols-4 desktop:gap-10">
-            {footerColumns.map((column) => (
+            {columns.map((column) => (
               <div key={column.heading} className="flex flex-col gap-4">
                 <p className="type-eyebrow text-gray-deep">{column.heading}</p>
                 <ul className="flex flex-col gap-4">

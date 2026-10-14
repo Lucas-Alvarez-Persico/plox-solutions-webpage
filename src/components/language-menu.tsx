@@ -48,12 +48,16 @@ export function LanguageMenu({
 
   return (
     <div ref={rootRef} className="relative flex">
+      {/*
+        El globo mide 21px. El padding con margen negativo agranda el área
+        táctil a 33px (el mínimo recomendado es 24) sin moverlo de lugar.
+      */}
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
         aria-controls="menu-idioma"
-        className="flex text-gray-deep transition-colors hover:text-ink"
+        className="-m-1.5 flex p-1.5 text-gray-deep transition-colors hover:text-ink"
       >
         <span className="sr-only">{label}</span>
         <GlobeIcon />

@@ -1,17 +1,17 @@
 import Image from "next/image";
 
+import { AccionesServicio } from "@/components/sections/service/acciones-servicio";
 import type { Servicio } from "@/content/servicios/tipos";
 
 /**
  * P-01 · Project — portada de la página de servicio: la foto a sangre con el
  * título y la bajada apoyados abajo.
  *
- * El título va fijo en 97px en los tres breakpoints, igual que en el diseño
- * original. Para que escale como el de la home (44 / 72 / 97) alcanza con sacar
- * la clase `text-[97px]`.
+ * El título mide 44 / 86 / 97px según el breakpoint, como en Framer: el de la
+ * home es 44 / 72 / 97, así que en tablet se sobreescribe.
  *
- * `break-words` es necesario justamente por ese tamaño fijo: en mobile hay
- * palabras más anchas que la pantalla, y sin esto la sección las recorta.
+ * `break-words` queda de resguardo: si un título trae una palabra más ancha que
+ * la pantalla, la parte en vez de dejar que la sección la recorte.
  */
 export function Project({ servicio }: { servicio: Servicio }) {
   return (
@@ -27,13 +27,17 @@ export function Project({ servicio }: { servicio: Servicio }) {
           priority
           sizes="100vw"
           className="object-cover object-center"
+          style={{
+            filter: `contrast(1.08) saturate(${servicio.portadaAjuste.saturacion})`,
+            objectPosition: servicio.portadaAjuste.encuadre,
+          }}
         />
       </div>
 
       <div className="container-site relative flex flex-col gap-5">
         <p
           data-reveal
-          className="type-eyebrow text-green"
+          className="type-eyebrow text-[12px] font-bold text-green"
           style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
         >
           {servicio.eyebrow}
@@ -41,19 +45,35 @@ export function Project({ servicio }: { servicio: Servicio }) {
 
         <h1
           data-reveal
-          className="type-display-1 max-w-[1000px] text-[97px] break-words text-bone-dim"
+          className="type-display-1 max-w-[1000px] break-words text-bone-dim tablet:text-[86px] desktop:text-[97px]"
           style={{ "--reveal-delay": "200ms" } as React.CSSProperties}
         >
           {servicio.titulo}
         </h1>
 
-        <p
+        {/* La frase destacada va 13,5px debajo del resumen, como en Framer. */}
+        <div
           data-reveal
-          className="type-summary max-w-[720px] text-bone"
+          className="flex max-w-[720px] flex-col gap-[13.5px]"
           style={{ "--reveal-delay": "300ms" } as React.CSSProperties}
         >
-          {servicio.resumen}
-        </p>
+          <p className="type-summary text-bone">{servicio.resumen}</p>
+          {servicio.resumenDestacado ? (
+            <p className="type-summary font-bold text-bone">
+              {servicio.resumenDestacado}
+            </p>
+          ) : null}
+        </div>
+
+        {servicio.acciones?.length ? (
+          <div
+            data-reveal
+            className="mt-2 flex flex-wrap gap-x-[23px] gap-y-3"
+            style={{ "--reveal-delay": "380ms" } as React.CSSProperties}
+          >
+            <AccionesServicio acciones={servicio.acciones} />
+          </div>
+        ) : null}
       </div>
     </section>
   );

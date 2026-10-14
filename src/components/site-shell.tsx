@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import ogImage from "@/assets/images/og-plox.png";
+
 import { AnchorScroll } from "@/components/anchor-scroll";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteFooter } from "@/components/site-footer";
@@ -29,6 +31,16 @@ export function siteMetadata(locale: Locale): Metadata {
   const description = siteDescription[locale];
   const home = localizePath(locale, "/");
 
+  // La imagen para compartir va explícita: el `openGraph` de acá reemplaza
+  // entero al del nivel de arriba, así que un `opengraph-image.png` suelto en
+  // `app/` no llegaba a la home.
+  const imagen = {
+    url: ogImage.src,
+    width: ogImage.width,
+    height: ogImage.height,
+    alt: siteName,
+  };
+
   return {
     metadataBase: new URL(siteUrl),
     title: {
@@ -45,11 +57,13 @@ export function siteMetadata(locale: Locale): Metadata {
       siteName,
       title,
       description,
+      images: [imagen],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [imagen],
     },
   };
 }

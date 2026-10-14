@@ -15,6 +15,7 @@ const es: Servicio = {
   resumen:
     "Intervenimos pérdidas en instalaciones industriales sin necesidad de detener el sistema, trabajando bajo sus condiciones normales de presión y temperatura cuando las condiciones de la instalación lo permiten.",
   portada: images.es.portadaSellado,
+  portadaAjuste: { saturacion: 0.95 },
 
   historia: [
     {
@@ -112,6 +113,7 @@ const en: Servicio = {
   resumen:
     "We address leaks in industrial facilities without the need to shut down the system, working under normal operating pressure and temperature conditions whenever the facility allows it.",
   portada: images.en.portadaSellado,
+  portadaAjuste: { saturacion: 0.95 },
 
   historia: [
     {

@@ -59,7 +59,11 @@ export function sectionHref(locale: Locale, id: string) {
  * Páginas de servicio. Las comparten el desplegable de "Servicios" del nav y
  * la columna de servicios del footer.
  */
-const serviceLinks: Localized<NavLink[]> = {
+/**
+ * Enlaces a las páginas de servicio. Los comparten el desplegable del nav, el
+ * footer y el hero, así los nombres y las rutas viven en un solo lugar.
+ */
+export const serviceLinks: Localized<NavLink[]> = {
   es: [
     { label: "Sellado de Fugas", href: "/sellado-de-fuga" },
     { label: "Calibración de Válvulas", href: "/calibracion-de-valvulas" },
@@ -74,13 +78,13 @@ const serviceLinks: Localized<NavLink[]> = {
 };
 
 function socialLinks(): NavLink[] {
-  // PENDIENTE: en el sitio de Framer estos enlaces apuntan a las cuentas de
-  // "northfield", la empresa de la plantilla original. Se dejan sin destino
-  // hasta tener las cuentas reales de Plox Solutions.
+  // Todavía no hay cuentas. Sin `href` el footer no muestra el enlace, y si
+  // ninguna red tiene destino oculta la columna entera. Para publicar una
+  // alcanza con completar su URL.
   return [
-    { label: "LinkedIn", href: "#" },
-    { label: "Instagram", href: "#" },
-    { label: "Facebook", href: "#" },
+    { label: "LinkedIn", href: "" },
+    { label: "Instagram", href: "" },
+    { label: "Facebook", href: "" },
   ];
 }
 
@@ -90,7 +94,7 @@ export const siteContent: Localized<SiteContent> = {
       { label: "Inicio", href: sectionHref("es", sectionIds.hero) },
       { label: "Nosotros", href: sectionHref("es", sectionIds.record) },
       {
-        label: "Servicio",
+        label: "Servicios",
         href: sectionHref("es", sectionIds.method),
         children: serviceLinks.es,
       },
@@ -173,3 +177,14 @@ export const siteContent: Localized<SiteContent> = {
 };
 
 export const companyName = "Plox Solutions";
+
+/**
+ * WhatsApp de consultas: +54 9 11 3025 2770, en el formato internacional sin
+ * signos ni espacios que pide wa.me.
+ */
+const whatsappNumero = "5491130252770";
+
+/** Enlace que abre una conversación de WhatsApp con un mensaje ya escrito. */
+export function whatsappHref(mensaje: string) {
+  return `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(mensaje)}`;
+}

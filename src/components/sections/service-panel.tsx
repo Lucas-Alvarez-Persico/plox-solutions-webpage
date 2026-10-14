@@ -1,10 +1,12 @@
 import { ButtonPrimary } from "@/components/button";
 import { RevealFrame } from "@/components/sections/reveal-frame";
+import { AccionesServicio } from "@/components/sections/service/acciones-servicio";
 import type { Service } from "@/content/home";
 
 /**
  * Panel de un servicio: la ilustración enmarcada, el código, la descripción y
- * el enlace a la página del servicio.
+ * el enlace a la página del servicio. Si el servicio tiene descargas o
+ * contacto, van en una fila arriba del enlace.
  */
 export function ServicePanel({
   service,
@@ -32,7 +34,12 @@ export function ServicePanel({
           {service.description}
         </p>
 
-        <div className="flex gap-3 pt-4">
+        <div className="flex flex-col items-start gap-4 pt-4">
+          {service.acciones?.length ? (
+            <div className="flex flex-wrap gap-4">
+              <AccionesServicio acciones={service.acciones} fantasma />
+            </div>
+          ) : null}
           <ButtonPrimary href={service.href}>{ctaLabel}</ButtonPrimary>
         </div>
       </div>

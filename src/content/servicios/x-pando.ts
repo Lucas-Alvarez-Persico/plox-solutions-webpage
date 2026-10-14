@@ -1,4 +1,5 @@
 import { images } from "@/content/images";
+import { whatsappHref } from "@/content/site";
 import { videos } from "@/content/videos";
 import type { Localized } from "@/lib/i18n";
 import type { Servicio } from "./tipos";
@@ -10,11 +11,34 @@ const es: Servicio = {
 
   cierre: "Una unión confiable empieza por elegir el compuesto adecuado.",
 
-  eyebrow: "Unión · Resistencia · Sellado",
+  acciones: [
+    {
+      tipo: "descarga",
+      etiqueta: "Descargar Folleto",
+      href: "/descargas/x-pando-folleto.pdf",
+      nombreArchivo: "X-Pando - Folleto Plox Solutions.pdf",
+    },
+    {
+      tipo: "descarga",
+      etiqueta: "Hoja de Seguridad",
+      href: "/descargas/x-pando-hoja-de-seguridad.pdf",
+      nombreArchivo: "X-Pando - Hoja de datos de seguridad.pdf",
+    },
+    {
+      tipo: "externo",
+      etiqueta: "Cotizar por WhatsApp",
+      icono: "whatsapp",
+      href: whatsappHref("Hola, quiero cotizar X-Pando."),
+    },
+  ],
+
+  eyebrow: "Sella · Expande · Resiste",
   titulo: "X-PANDO",
   resumen:
     "Cemento expansivo para uniones industriales que, al mezclarse con agua y curar, genera una expansión leve y permanente que contribuye a obtener conexiones resistentes y herméticas.",
+  resumenDestacado: "No sólo rellena. Expande para sellar.",
   portada: images.es.portadaXpando,
+  portadaAjuste: { saturacion: 1, encuadre: "51% 29.1%" },
 
   historia: [
     {
@@ -32,7 +56,7 @@ const es: Servicio = {
   tecnicas: {
     encabezado: "UN COMPUESTO PARA CONDICIONES EXIGENTES",
     intro:
-      "X-Pando es un cemento de unión diseñado para conexiones roscadas y bridadas. A diferencia de una grasa o pasta convencional para roscas, se prepara antes de su utilización y desarrolla una ligera expansión durante el proceso de curado.",
+      "X-Pando es un cemento de unión diseñado para conexiones roscadas y bridadas. A diferencia de una grasa o pasta convencional para roscas, se prepara antes de su utilización y desarrolla una ligera expansión durante el proceso de curado. Esta característica permite que el material ocupe irregularidades presentes entre las superficies y contribuya al sellado de la conexión.",
     video: videos.xpando,
     bloques: [
       {
@@ -44,7 +68,7 @@ const es: Servicio = {
         ],
       },
       {
-        titulo: "Aplicación",
+        titulo: "Modo de uso",
         cuerpos: [
           "El procedimiento se desarrolla en tres etapas principales:",
           {
@@ -73,11 +97,17 @@ const es: Servicio = {
         ],
       },
       {
-        titulo: "Condiciones de servicio",
+        titulo: "Condiciones del servicio",
         cuerpos: [
           "La documentación técnica de referencia indica aplicaciones de hasta:",
-          { etiqueta: "350 kg/cm²", texto: "Presión máxima indicada." },
-          { etiqueta: "700 °C", texto: "Temperatura máxima indicada." },
+          {
+            etiqueta: "5000 PSI / 352 kg/cm² / 345 bar",
+            texto: "Presión máxima indicada.",
+          },
+          {
+            etiqueta: "-184 °C — 565 °C",
+            texto: "Rango de temperaturas compatibles.",
+          },
           { etiqueta: "Hasta 1 mm", texto: "Expansión durante el curado." },
           "Estos valores corresponden a las capacidades indicadas para el producto. La compatibilidad y condiciones de aplicación deben evaluarse de acuerdo con las características particulares de cada instalación.",
         ],
@@ -137,11 +167,35 @@ const en: Servicio = {
 
   cierre: "A reliable connection starts with choosing the right compound.",
 
-  eyebrow: "Union · Strength · Sealing",
+  // Etiquetas del Framer en inglés. Los dos PDF están en español.
+  acciones: [
+    {
+      tipo: "descarga",
+      etiqueta: "Download Information Page",
+      href: "/descargas/x-pando-folleto.pdf",
+      nombreArchivo: "X-Pando - Folleto Plox Solutions.pdf",
+    },
+    {
+      tipo: "descarga",
+      etiqueta: "Download Safety Sheet",
+      href: "/descargas/x-pando-hoja-de-seguridad.pdf",
+      nombreArchivo: "X-Pando - Hoja de datos de seguridad.pdf",
+    },
+    {
+      tipo: "externo",
+      etiqueta: "Inquire on WhatsApp",
+      icono: "whatsapp",
+      href: whatsappHref("Hi, I'd like to inquire about X-Pando."),
+    },
+  ],
+
+  eyebrow: "Seal · Expand · Resist",
   titulo: "X-PANDO",
   resumen:
     "Expanding cement compound for industrial joints that, when mixed with water and cured, produces slight and permanent expansion, helping create strong and leak-tight connections.",
+  resumenDestacado: "It doesn't just fill. It expands to seal.",
   portada: images.en.portadaXpando,
+  portadaAjuste: { saturacion: 1, encuadre: "51% 29.1%" },
 
   historia: [
     {
@@ -172,7 +226,7 @@ const en: Servicio = {
         ],
       },
       {
-        titulo: "Application",
+        titulo: "How to use",
         cuerpos: [
           "The procedure consists of three main stages:",
           {
@@ -204,8 +258,14 @@ const en: Servicio = {
         titulo: "Service conditions",
         cuerpos: [
           "Reference technical documentation indicates applications of up to:",
-          { etiqueta: "350 kg/cm²", texto: "Maximum indicated pressure." },
-          { etiqueta: "700 °C", texto: "Maximum indicated temperature." },
+          {
+            etiqueta: "5000 PSI / 352 kg/cm² / 345 bar",
+            texto: "Maximum indicated pressure.",
+          },
+          {
+            etiqueta: "-184 °C — 565 °C",
+            texto: "Compatible temperature range.",
+          },
           { etiqueta: "Up to 1 mm", texto: "Expansion during curing." },
           "These values correspond to the product's indicated capabilities. Compatibility and application conditions must be evaluated according to the specific characteristics of each installation.",
         ],

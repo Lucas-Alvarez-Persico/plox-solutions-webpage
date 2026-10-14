@@ -1,6 +1,8 @@
 import { localizePath, type Localized } from "@/lib/i18n";
 import { images, type SiteImage } from "./images";
-import { sectionHref, sectionIds } from "./site";
+import type { AccionServicio } from "./servicios/tipos";
+import { xPando } from "./servicios/x-pando";
+import { type NavLink, sectionHref, sectionIds } from "./site";
 
 export interface Service {
   code: string;
@@ -11,6 +13,8 @@ export interface Service {
   description: string;
   href: string;
   image: SiteImage;
+  /** Botones de descarga y contacto, arriba del enlace al servicio. */
+  acciones?: readonly AccionServicio[];
 }
 
 export interface EnquiryField {
@@ -43,6 +47,11 @@ export interface HomeContent {
     body: string;
     image: SiteImage;
     cta: { label: string; href: string };
+    /**
+     * Línea de servicios entre el párrafo y el botón. Lleva sus propios
+     * nombres: en Framer son más largos que los del nav.
+     */
+    services: readonly NavLink[];
   };
   record: {
     title: string;
@@ -65,6 +74,12 @@ const es: HomeContent = {
     body: "Soluciones especializadas para intervenir, mantener y optimizar instalaciones industriales, reduciendo interrupciones y asegurando la continuidad de las operaciones.",
     image: images.es.hero,
     cta: { label: "Contactanos", href: sectionHref("es", sectionIds.enquiry) },
+    services: [
+      { label: "Sellado de Fugas en operación", href: "/sellado-de-fuga" },
+      // Framer dice "en situ"; la página de calibración usa "in situ".
+      { label: "Calibración de válvulas in situ", href: "/calibracion-de-valvulas" },
+      { label: "X-Pando", href: "/x-pando" },
+    ],
   },
 
   record: {
@@ -94,7 +109,7 @@ const es: HomeContent = {
         id: "m-01",
         name: "Sellado de Fugas en Operación",
         description:
-          "Control y sellado de fugas sin necesidad de interrumpir el funcionamiento de la instalación",
+          "Control y sellado de fugas sin necesidad de interrumpir el funcionamiento de la instalación.",
         href: "/sellado-de-fuga",
         image: images.es.servicioSellado,
       },
@@ -115,12 +130,13 @@ const es: HomeContent = {
           "Sistema de cemento expansivo para uniones industriales, diseñado para generar conexiones resistentes bajo condiciones exigentes de presión y temperatura.",
         href: "/x-pando",
         image: images.es.servicioXpando,
+        acciones: xPando.es.acciones,
       },
     ],
   },
 
   enquiry: {
-    title: "Contanos sobre tu proyecto",
+    title: "Contanos qué necesitás",
     subtitle:
       "Compartinos tu necesidad y nuestro equipo evaluará la mejor solución para acompañar tu operación.",
     fields: [
@@ -180,6 +196,14 @@ const en: HomeContent = {
     body: "Specialized solutions for intervening in, maintaining, and optimizing industrial facilities, reducing downtime and ensuring operational continuity.",
     image: images.en.hero,
     cta: { label: "Contact Us", href: sectionHref("en", sectionIds.enquiry) },
+    services: [
+      { label: "On-site leak sealing", href: localizePath("en", "/sellado-de-fuga") },
+      {
+        label: "Safety valve calibration",
+        href: localizePath("en", "/calibracion-de-valvulas"),
+      },
+      { label: "X-Pando", href: localizePath("en", "/x-pando") },
+    ],
   },
 
   record: {
@@ -229,12 +253,13 @@ const en: HomeContent = {
           "Expanding cement compound for industrial joints, designed to create strong, leak-tight connections under demanding pressure and temperature conditions.",
         href: localizePath("en", "/x-pando"),
         image: images.en.servicioXpando,
+        acciones: xPando.en.acciones,
       },
     ],
   },
 
   enquiry: {
-    title: "Tell us about your project",
+    title: "Tell us what you need",
     subtitle:
       "Share your requirements with us and our team will evaluate the best solution to support your operation.",
     fields: [

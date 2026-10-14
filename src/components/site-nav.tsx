@@ -22,7 +22,7 @@ import type { Locale } from "@/lib/i18n";
  */
 export function SiteNav({ locale }: { locale: Locale }) {
   const { navLinks, navCta, ui } = siteContent[locale];
-  const logo = images[locale].logo;
+  const logo = images[locale].logoNav;
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -56,18 +56,23 @@ export function SiteNav({ locale }: { locale: Locale }) {
         aria-label={ui.mainNav}
         className="section-x flex h-16 items-center tablet:h-18"
       >
-        <div className="container-site flex h-11 items-center justify-between tablet:h-12">
+        <div className="container-site flex items-center justify-between">
           <Link
             href={sectionHref(locale, sectionIds.hero)}
             className="flex items-center"
             aria-label={`${logo.alt} — ${ui.goHome}`}
           >
+            {/*
+              Caja y encuadre de Framer: 157×54,8 con `object-cover`. El archivo
+              es más apaisado que la caja, así que se recorta apenas de los
+              costados, igual que en el diseño.
+            */}
             <Image
               src={logo.src}
               alt=""
               priority
-              className="h-11 w-auto"
-              sizes="127px"
+              className="h-[54.8px] w-[157px] object-cover"
+              sizes="157px"
             />
           </Link>
 
@@ -109,10 +114,14 @@ export function SiteNav({ locale }: { locale: Locale }) {
         </div>
       </nav>
 
+      {/*
+        Scrollea por su cuenta: con el celular apaisado el contenido no entra, y
+        el scroll de la página está bloqueado mientras el menú está abierto.
+      */}
       <div
         id="menu-principal"
         hidden={!open}
-        className="section-x fixed inset-x-0 top-16 bottom-0 z-[5] bg-white tablet:hidden"
+        className="section-x fixed inset-x-0 top-16 bottom-0 z-[5] overflow-y-auto overscroll-contain bg-white pb-8 tablet:hidden"
       >
         <ul className="container-site flex flex-col gap-6 pt-8">
           {navLinks.map((link) => (

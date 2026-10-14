@@ -471,6 +471,12 @@
     --hero-in-y: 16px;
     animation-delay: 620ms;
   }
+
+  /* Entre el párrafo y el botón, en el mismo escalonado. */
+  .hero-in-services {
+    --hero-in-y: 16px;
+    animation-delay: 560ms;
+  }
 }
 
 @keyframes hero-text-in {

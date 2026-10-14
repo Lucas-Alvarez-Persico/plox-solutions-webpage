@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Fragment } from "react";
 
 import { ButtonPrimary } from "@/components/button";
 import type { HomeContent } from "@/content/home";
@@ -10,9 +12,11 @@ const SCRIM =
 
 export function Hero({ content: hero }: { content: HomeContent["hero"] }) {
   return (
+    // En desktop, Framer deja 206px de padding inferior para que se vea la
+    // marca de agua del logo, que viene impresa en la foto, debajo del texto.
     <section
       id={sectionIds.hero}
-      className="section-x relative flex min-h-[88vh] scroll-mt-18 flex-col overflow-clip bg-bone pt-25 pb-8 tablet:min-h-[94vh] tablet:pt-35 tablet:pb-10 desktop:pt-25 desktop:pb-12"
+      className="section-x relative flex min-h-[88vh] scroll-mt-18 flex-col overflow-clip bg-bone pt-25 pb-8 tablet:min-h-[94vh] tablet:pt-[62px] tablet:pb-10 desktop:pt-[57px] desktop:pb-[206px]"
     >
       <div className="hero-photo absolute inset-0">
         <Image
@@ -62,6 +66,30 @@ export function Hero({ content: hero }: { content: HomeContent["hero"] }) {
         */}
         <p className="hero-in hero-in-body type-body-l max-w-[520px] p-2 text-bone-dim">
           {hero.body}
+        </p>
+
+        {/*
+          Los servicios, en una línea de enlaces separados por guiones. Cada
+          palabra va sin cortes internos: si no, en mobile "X-Pando" se parte
+          en el guion, como pasa en Framer.
+        */}
+        <p className="hero-in hero-in-services type-kicker text-[21px] font-bold text-gray">
+          {hero.services.map((service, index) => (
+            <Fragment key={service.href}>
+              {index > 0 ? " - " : null}
+              <Link
+                href={service.href}
+                className="text-green transition-colors hover:text-bone"
+              >
+                {service.label.split(" ").map((palabra, i) => (
+                  <Fragment key={i}>
+                    {i > 0 ? " " : null}
+                    <span className="whitespace-nowrap">{palabra}</span>
+                  </Fragment>
+                ))}
+              </Link>
+            </Fragment>
+          ))}
         </p>
 
         <div className="hero-in hero-in-cta">

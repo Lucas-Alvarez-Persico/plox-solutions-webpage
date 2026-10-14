@@ -28,6 +28,9 @@ const ESCALA_FOTO = [1.06, 1.06, 1, 1];
  *
  * Por debajo de 810px o con movimiento reducido no se anima nada: la foto se ve
  * completa.
+ *
+ * La foto lleva el mismo ajuste de color que en Framer: algo más oscura, con más
+ * contraste y menos saturada.
  */
 export function RevealFrame({ image }: { image: SiteImage }) {
   const marco = useRef<HTMLDivElement>(null);
@@ -65,7 +68,7 @@ export function RevealFrame({ image }: { image: SiteImage }) {
           alt={image.alt}
           fill
           sizes="(min-width: 1200px) 805px, (min-width: 810px) 395px, 100vw"
-          className="object-cover object-center"
+          className="object-cover object-center brightness-92 contrast-106 saturate-72"
         />
       </div>
     </div>

@@ -63,7 +63,7 @@ export function StickyVideo({ video }: { video: SiteVideo }) {
       playsInline
       preload="none"
       aria-hidden="true"
-      className="size-[497px] max-w-none object-cover"
+      className="aspect-square h-auto w-full object-cover tablet:size-[277px] desktop:size-[497px]"
     />
   );
 }

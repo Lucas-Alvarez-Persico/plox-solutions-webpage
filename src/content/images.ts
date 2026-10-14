@@ -11,6 +11,7 @@ import posterSellado from "@/assets/images/poster-sellado.jpg";
 import posterValvulas from "@/assets/images/poster-valvulas.jpg";
 import posterXpando from "@/assets/images/poster-xpando.jpg";
 import logo from "@/assets/images/logo-plox.png";
+import logoNav from "@/assets/images/logo-plox-nav.png";
 import servicioSellado from "@/assets/images/servicio-sellado.jpg";
 import servicioValvulas from "@/assets/images/servicio-valvulas.jpg";
 import servicioXpando from "@/assets/images/servicio-xpando.jpg";
@@ -27,6 +28,9 @@ export interface SiteImage {
 
 const files = {
   logo,
+  // El del nav es el mismo logo recortado al ras, sin el margen transparente
+  // que conserva el del footer: así lo entregó Framer para cada lugar.
+  logoNav,
   hero: heroPhoto,
   servicioSellado,
   servicioValvulas,
@@ -59,7 +63,8 @@ type ImageKey = keyof typeof files;
 const alts: Localized<Partial<Record<ImageKey, string>>> = {
   es: {
     logo: "Plox Solutions",
-    hero: "Dos técnicos ajustando los espárragos de una brida sobre equipamiento industrial en planta.",
+    logoNav: "Plox Solutions",
+    hero: "Dos operarios con casco y remera roja trabajando sobre una estructura de chapa en planta, con el logo de Plox Solutions superpuesto.",
     servicioSellado:
       "Esquema isométrico de un sellado de fuga: una abrazadera inyectada con sellante sobre la junta bridada de una cañería, alimentada por una bomba manual con manómetro.",
     servicioValvulas:
@@ -75,7 +80,8 @@ const alts: Localized<Partial<Record<ImageKey, string>>> = {
   },
   en: {
     logo: "Plox Solutions",
-    hero: "Two technicians tightening the studs of a flange on industrial equipment at a plant.",
+    logoNav: "Plox Solutions",
+    hero: "Two workers in red shirts and hard hats working on a steel plate structure at a plant, with the Plox Solutions logo overlaid.",
     servicioSellado:
       "Isometric diagram of a leak sealing job: a clamp injected with sealant over a flanged pipe joint, fed by a hand pump with a pressure gauge.",
     servicioValvulas:
