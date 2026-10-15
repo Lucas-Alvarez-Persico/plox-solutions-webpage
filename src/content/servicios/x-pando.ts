@@ -38,7 +38,7 @@ const es: Servicio = {
     "Cemento expansivo para uniones industriales que, al mezclarse con agua y curar, genera una expansión leve y permanente que contribuye a obtener conexiones resistentes y herméticas.",
   resumenDestacado: "No sólo rellena. Expande para sellar.",
   portada: images.es.portadaXpando,
-  portadaAjuste: { saturacion: 1, encuadre: "51% 29.1%" },
+  portadaAjuste: { saturacion: 1 },
 
   historia: [
     {
@@ -195,7 +195,7 @@ const en: Servicio = {
     "Expanding cement compound for industrial joints that, when mixed with water and cured, produces slight and permanent expansion, helping create strong and leak-tight connections.",
   resumenDestacado: "It doesn't just fill. It expands to seal.",
   portada: images.en.portadaXpando,
-  portadaAjuste: { saturacion: 1, encuadre: "51% 29.1%" },
+  portadaAjuste: { saturacion: 1 },
 
   historia: [
     {

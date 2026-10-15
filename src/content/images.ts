@@ -70,7 +70,7 @@ const alts: Localized<Partial<Record<ImageKey, string>>> = {
     servicioValvulas:
       "Esquema isométrico de una calibración de válvulas en la instalación: un bastidor con cilindros hidráulicos montado sobre una válvula de seguridad bridada, conectado a una unidad hidráulica con manómetro y a un monitor que grafica la prueba.",
     servicioXpando:
-      "Esquema isométrico del sistema X-Pando: vista en corte de una unión roscada sellada con cemento expansivo, con detalle ampliado del filete.",
+      "Ilustración de X-Pando: el logo entre un niple roscado y un accesorio en corte con el compuesto aplicado, junto a una lata abierta y un pincel.",
     portadaSellado:
       "Primer plano de una brida empernada sobre una cañería industrial, con el resto de la instalación desenfocada al fondo.",
     portadaValvulas:
@@ -87,7 +87,7 @@ const alts: Localized<Partial<Record<ImageKey, string>>> = {
     servicioValvulas:
       "Isometric diagram of an on-site valve calibration: a frame with hydraulic cylinders mounted on a flanged safety valve, connected to a hydraulic unit with a pressure gauge and to a monitor plotting the test.",
     servicioXpando:
-      "Isometric diagram of the X-Pando system: cutaway view of a threaded joint sealed with expanding cement, with an enlarged detail of the thread.",
+      "X-Pando illustration: the logo between a threaded nipple and a cutaway fitting with the compound applied, next to an open can and a brush.",
     portadaSellado:
       "Close-up of a bolted flange on industrial piping, with the rest of the facility blurred in the background.",
     portadaValvulas:
