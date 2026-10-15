@@ -65,7 +65,8 @@ export function Enquiry({
     setStatus("sending");
 
     try {
-      const response = await fetch("/api/contact", {
+      // Lo atiende `public/api/contact.php` en el hosting (no corre en `next dev`).
+      const response = await fetch("/api/contact.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         // El idioma viaja con la consulta para saber en cuál responder.

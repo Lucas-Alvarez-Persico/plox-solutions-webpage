@@ -33,6 +33,7 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 !.env.example
+!.env.production
 
 # vercel
 .vercel
@@ -41,7 +42,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# cloudflare / opennext
-.open-next
-.wrangler
-.dev.vars
+# configuración del formulario en el hosting (ver plox-contacto.example.php)
+plox-contacto.php

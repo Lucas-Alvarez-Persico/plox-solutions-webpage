@@ -1,0 +1,34 @@
+# Configuración de Apache para el hosting de DonWeb. Viaja con el export
+# (`out/`) y va en la raíz de `public_html`.
+
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Forzar HTTPS. Activalo recién cuando el certificado SSL del dominio esté
+  # andando en el panel de DonWeb; antes, el sitio dejaría de cargar.
+  # RewriteCond %{HTTPS} off
+  # RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # El styleguide es solo para desarrollo: en producción, 404 de verdad.
+  RewriteRule ^styleguide(/|$) - [R=404,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Lo que genera el build lleva un hash en el nombre: se cachea para siempre.
+  <If "%{REQUEST_URI} =~ m#^/(_next/static|videos)/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  # El HTML se revalida siempre, para que un deploy nuevo se vea al instante.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/javascript application/json application/xml image/svg+xml
+</IfModule>
