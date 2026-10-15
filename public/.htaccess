@@ -8,11 +8,11 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Forzar HTTPS. Activalo recién cuando el certificado SSL del dominio esté
-  # andando en el panel de DonWeb; antes, el sitio dejaría de cargar.
-  # RewriteCond %{HTTPS} off
-  # RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # Forzar HTTPS. El certificado (Let's Encrypt, renovación automática) está
+  # activo en el panel de DonWeb.
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # El styleguide es solo para desarrollo: en producción, 404 de verdad.
   RewriteRule ^styleguide(/|$) - [R=404,L]

@@ -101,12 +101,14 @@ $cabeceras = implode("\r\n", [
     'Content-Transfer-Encoding: 8bit',
 ]);
 
+// Sin el quinto parámetro (`-f`, el remitente del sobre): el hosting de DonWeb
+// tiene Snuffleupagus, que corta la ejecución si `mail()` lo recibe. El From y
+// el Reply-To van igual en las cabeceras.
 $enviado = mail(
     $config['to'],
     '=?UTF-8?B?' . base64_encode($asunto) . '?=',
     $cuerpo,
-    $cabeceras,
-    '-f' . $config['from']
+    $cabeceras
 );
 
 if (!$enviado) {
