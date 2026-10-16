@@ -10,6 +10,7 @@ import type { Parrafo, Servicio } from "@/content/servicios/tipos";
  */
 export function Outcome({ servicio }: { servicio: Servicio }) {
   const { tecnicas } = servicio;
+  const acciones = servicio.accionesVideo ?? servicio.acciones;
 
   return (
     <section
@@ -59,9 +60,9 @@ export function Outcome({ servicio }: { servicio: Servicio }) {
         <div className="flex flex-col gap-4 py-16 tablet:sticky tablet:top-30 tablet:w-70 tablet:shrink-0 tablet:py-0 desktop:w-[497px]">
           <StickyVideo video={tecnicas.video} />
 
-          {servicio.acciones?.length ? (
+          {acciones?.length ? (
             <div className="flex flex-col items-start gap-4">
-              <AccionesServicio acciones={servicio.acciones} />
+              <AccionesServicio acciones={acciones} />
             </div>
           ) : null}
         </div>

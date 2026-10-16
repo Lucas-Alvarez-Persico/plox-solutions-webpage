@@ -63,16 +63,16 @@ export function SiteNav({ locale }: { locale: Locale }) {
             aria-label={`${logo.alt} — ${ui.goHome}`}
           >
             {/*
-              Caja y encuadre de Framer: 157×54,8 con `object-cover`. El archivo
-              es más apaisado que la caja, así que se recorta apenas de los
-              costados, igual que en el diseño.
+              Caja y encuadre de Framer: 185×64,5 con `object-contain`. El
+              archivo es más apaisado que la caja, así que queda centrado con
+              un poco de aire arriba y abajo, igual que en el diseño.
             */}
             <Image
               src={logo.src}
               alt=""
               priority
-              className="h-[54.8px] w-[157px] object-cover"
-              sizes="157px"
+              className="h-[64.5px] w-[185px] object-contain"
+              sizes="185px"
             />
           </Link>
 

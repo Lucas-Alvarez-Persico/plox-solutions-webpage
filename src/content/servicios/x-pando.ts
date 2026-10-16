@@ -1,8 +1,25 @@
 import { images } from "@/content/images";
 import { whatsappHref } from "@/content/site";
 import { videos } from "@/content/videos";
-import type { Localized } from "@/lib/i18n";
-import type { Servicio } from "./tipos";
+import { localizePath, type Localized } from "@/lib/i18n";
+import type { AccionServicio, Servicio } from "./tipos";
+
+/** Ruta de la página de preguntas frecuentes, en español. */
+export const rutaPreguntasXPando = "/x-pando/preguntas-frecuentes";
+
+const whatsappEs: AccionServicio = {
+  tipo: "externo",
+  etiqueta: "Cotizar por WhatsApp",
+  icono: "whatsapp",
+  href: whatsappHref("Hola, quiero cotizar X-Pando."),
+};
+
+const whatsappEn: AccionServicio = {
+  tipo: "externo",
+  etiqueta: "Inquire on WhatsApp",
+  icono: "whatsapp",
+  href: whatsappHref("Hi, I'd like to inquire about X-Pando."),
+};
 
 const es: Servicio = {
   slug: "x-pando",
@@ -24,12 +41,16 @@ const es: Servicio = {
       href: "/descargas/x-pando-hoja-de-seguridad.pdf",
       nombreArchivo: "X-Pando - Hoja de datos de seguridad.pdf",
     },
+    whatsappEs,
+  ],
+  // Debajo del video, Framer cambió las descargas por las preguntas frecuentes.
+  accionesVideo: [
     {
-      tipo: "externo",
-      etiqueta: "Cotizar por WhatsApp",
-      icono: "whatsapp",
-      href: whatsappHref("Hola, quiero cotizar X-Pando."),
+      tipo: "interno",
+      etiqueta: "Preguntas Frecuentes",
+      href: rutaPreguntasXPando,
     },
+    whatsappEs,
   ],
 
   eyebrow: "Sella · Expande · Resiste",
@@ -181,12 +202,15 @@ const en: Servicio = {
       href: "/descargas/x-pando-hoja-de-seguridad.pdf",
       nombreArchivo: "X-Pando - Hoja de datos de seguridad.pdf",
     },
+    whatsappEn,
+  ],
+  accionesVideo: [
     {
-      tipo: "externo",
-      etiqueta: "Inquire on WhatsApp",
-      icono: "whatsapp",
-      href: whatsappHref("Hi, I'd like to inquire about X-Pando."),
+      tipo: "interno",
+      etiqueta: "Frequent Questions",
+      href: localizePath("en", rutaPreguntasXPando),
     },
+    whatsappEn,
   ],
 
   eyebrow: "Seal · Expand · Resist",

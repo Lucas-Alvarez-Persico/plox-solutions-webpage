@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { servicios } from "@/content/servicios";
+import { rutaPreguntasXPando } from "@/content/servicios/x-pando";
 import { languageAlternates, localizePath, locales } from "@/lib/i18n";
 import { siteUrl } from "@/lib/site-config";
 
@@ -23,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ruta: `/${servicio.slug}`,
       priority: 0.8,
     })),
+    { ruta: rutaPreguntasXPando, priority: 0.6 },
   ];
 
   // Cada página figura una vez por idioma, con sus alternativas declaradas.

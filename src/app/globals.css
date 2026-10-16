@@ -497,3 +497,29 @@
     transform: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Acordeón de preguntas frecuentes
+   La respuesta se despliega animando la altura del contenido del `<details>`.
+   Donde el navegador no soporta `::details-content`, abre de golpe.
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  @media (prefers-reduced-motion: no-preference) {
+    .faq-item {
+      interpolate-size: allow-keywords;
+    }
+
+    .faq-item::details-content {
+      height: 0;
+      overflow: clip;
+      transition:
+        height 300ms var(--default-transition-timing-function),
+        content-visibility 300ms allow-discrete;
+    }
+
+    .faq-item[open]::details-content {
+      height: auto;
+    }
+  }
+}

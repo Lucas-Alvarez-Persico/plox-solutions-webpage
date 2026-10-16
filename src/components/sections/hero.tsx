@@ -1,14 +1,45 @@
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import Link from "next/link";
-import { Fragment } from "react";
 
 import { ButtonPrimary } from "@/components/button";
 import type { HomeContent } from "@/content/home";
+import type { SiteImage } from "@/content/images";
 import { sectionIds } from "@/content/site";
 
 /** Degradado que oscurece la foto para que el texto tenga contraste. */
 const SCRIM =
   "linear-gradient(rgba(22, 24, 26, 0.78) 0%, rgba(22, 24, 26, 0.55) 45%, rgba(22, 24, 26, 0.92) 100%)";
+
+/**
+ * Una foto por breakpoint, como en Framer: cada una trae el logo impreso en
+ * otra posición. Con `<picture>` el navegador baja solo la que corresponde.
+ * Va `eager` en vez de `preload` porque el preload no sabe elegir entre las
+ * tres y terminaría bajando la de desktop también en el celular.
+ */
+function HeroPhoto({ hero }: { hero: HomeContent["hero"] }) {
+  // Con `images.unoptimized` no hay `srcSet`: queda solo la URL del archivo.
+  const propsOf = (image: SiteImage) =>
+    getImageProps({ alt: hero.image.alt, sizes: "100vw", src: image.src }).props;
+  const srcSetOf = (image: SiteImage) => {
+    const { srcSet, src } = propsOf(image);
+    return srcSet ?? src;
+  };
+
+  return (
+    <picture>
+      <source media="(min-width: 1200px)" srcSet={srcSetOf(hero.image)} />
+      <source media="(min-width: 810px)" srcSet={srcSetOf(hero.imageTablet)} />
+      <img
+        {...propsOf(hero.imageMobile)}
+        srcSet={srcSetOf(hero.imageMobile)}
+        alt={hero.image.alt}
+        loading="eager"
+        fetchPriority="high"
+        className="absolute inset-0 size-full object-cover object-center"
+      />
+    </picture>
+  );
+}
 
 export function Hero({ content: hero }: { content: HomeContent["hero"] }) {
   return (
@@ -19,14 +50,7 @@ export function Hero({ content: hero }: { content: HomeContent["hero"] }) {
       className="section-x relative flex min-h-[88vh] scroll-mt-18 flex-col overflow-clip bg-bone pt-25 pb-8 tablet:min-h-[94vh] tablet:pt-[62px] tablet:pb-10 desktop:pt-[57px] desktop:pb-[206px]"
     >
       <div className="hero-photo absolute inset-0">
-        <Image
-          src={hero.image.src}
-          alt={hero.image.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
+        <HeroPhoto hero={hero} />
       </div>
 
       <div
@@ -69,28 +93,30 @@ export function Hero({ content: hero }: { content: HomeContent["hero"] }) {
         </p>
 
         {/*
-          Los servicios, en una línea de enlaces separados por guiones. Cada
-          palabra va sin cortes internos: si no, en mobile "X-Pando" se parte
-          en el guion, como pasa en Framer.
+          Los servicios: en desktop, una línea de enlaces separados por
+          guiones; en tablet y mobile, uno por línea. Tablet usa los nombres
+          cortos, como en Framer.
         */}
-        <p className="hero-in hero-in-services type-kicker text-[21px] font-bold text-gray">
+        <ul className="hero-in hero-in-services type-kicker flex flex-col gap-2.5 text-[21px] leading-[1.2] font-bold text-gray desktop:block">
           {hero.services.map((service, index) => (
-            <Fragment key={service.href}>
-              {index > 0 ? " - " : null}
+            <li key={service.href} className="desktop:inline">
+              {index > 0 ? (
+                <span aria-hidden="true" className="hidden desktop:inline">
+                  {" - "}
+                </span>
+              ) : null}
               <Link
                 href={service.href}
                 className="text-green transition-colors hover:text-bone"
               >
-                {service.label.split(" ").map((palabra, i) => (
-                  <Fragment key={i}>
-                    {i > 0 ? " " : null}
-                    <span className="whitespace-nowrap">{palabra}</span>
-                  </Fragment>
-                ))}
+                <span className="tablet:max-desktop:hidden">{service.label}</span>
+                <span className="hidden tablet:max-desktop:inline">
+                  {service.shortLabel}
+                </span>
               </Link>
-            </Fragment>
+            </li>
           ))}
-        </p>
+        </ul>
 
         <div className="hero-in hero-in-cta">
           <ButtonPrimary href={hero.cta.href}>{hero.cta.label}</ButtonPrimary>

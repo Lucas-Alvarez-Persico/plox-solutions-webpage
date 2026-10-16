@@ -12,8 +12,21 @@ import type { Servicio } from "@/content/servicios/tipos";
  *
  * `break-words` queda de resguardo: si un título trae una palabra más ancha que
  * la pantalla, la parte en vez de dejar que la sección la recorte.
+ *
+ * `encabezado` reemplaza el título y la bajada del servicio: lo usa la página
+ * de preguntas frecuentes, que comparte la portada.
  */
-export function Project({ servicio }: { servicio: Servicio }) {
+export function Project({
+  servicio,
+  encabezado,
+}: {
+  servicio: Servicio;
+  encabezado?: { titulo: React.ReactNode; resumen: string };
+}) {
+  const titulo = encabezado?.titulo ?? servicio.titulo;
+  const resumen = encabezado?.resumen ?? servicio.resumen;
+  const resumenDestacado = encabezado ? undefined : servicio.resumenDestacado;
+
   return (
     <section
       id="p-01-project"
@@ -48,7 +61,7 @@ export function Project({ servicio }: { servicio: Servicio }) {
           className="type-display-1 max-w-[1000px] break-words text-bone-dim tablet:text-[86px] desktop:text-[97px]"
           style={{ "--reveal-delay": "200ms" } as React.CSSProperties}
         >
-          {servicio.titulo}
+          {titulo}
         </h1>
 
         {/* La frase destacada va 13,5px debajo del resumen, como en Framer. */}
@@ -57,10 +70,10 @@ export function Project({ servicio }: { servicio: Servicio }) {
           className="flex max-w-[720px] flex-col gap-[13.5px]"
           style={{ "--reveal-delay": "300ms" } as React.CSSProperties}
         >
-          <p className="type-summary text-bone">{servicio.resumen}</p>
-          {servicio.resumenDestacado ? (
+          <p className="type-summary text-bone">{resumen}</p>
+          {resumenDestacado ? (
             <p className="type-summary font-bold text-bone">
-              {servicio.resumenDestacado}
+              {resumenDestacado}
             </p>
           ) : null}
         </div>

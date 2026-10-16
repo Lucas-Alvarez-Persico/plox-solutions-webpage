@@ -5,8 +5,8 @@ import type { AccionServicio } from "@/content/servicios/tipos";
  * Botones de descarga y contacto de un servicio. Devuelve solo los botones:
  * el contenedor lo pone cada sección, porque cambia cómo se acomodan.
  *
- * Como en Framer, las descargas van en verde y el enlace externo (WhatsApp) en
- * petróleo. En el panel de la home van todos en la variante fantasma, para que
+ * Como en Framer, las descargas y los enlaces internos van en verde y el
+ * externo (WhatsApp) en petróleo. En el panel de la home van todos en la variante fantasma, para que
  * el destacado siga siendo "Ver servicio".
  */
 export function AccionesServicio({

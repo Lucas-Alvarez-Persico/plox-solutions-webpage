@@ -24,11 +24,12 @@ export interface BloqueTecnica {
 
 /**
  * Botón de la columna del video. Una descarga baja el archivo; un enlace
- * externo se abre en otra pestaña.
+ * externo se abre en otra pestaña; uno interno navega dentro del sitio.
  */
 export type AccionServicio =
   | { tipo: "descarga"; etiqueta: string; href: string; nombreArchivo: string }
-  | { tipo: "externo"; etiqueta: string; href: string; icono?: "whatsapp" };
+  | { tipo: "externo"; etiqueta: string; href: string; icono?: "whatsapp" }
+  | { tipo: "interno"; etiqueta: string; href: string };
 
 /** Contenido de una página de servicio. */
 export interface Servicio {
@@ -66,6 +67,24 @@ export interface Servicio {
   /** Cierre (P-07) */
   cierre: string;
 
-  /** Botones de descarga y contacto: van debajo del video y en el cierre. */
+  /** Botones de descarga y contacto: van en la portada, debajo del video y en el cierre. */
   acciones?: AccionServicio[];
+  /** Botones de debajo del video, cuando no son los mismos que `acciones`. */
+  accionesVideo?: AccionServicio[];
+}
+
+/** Una pregunta frecuente con su respuesta, que puede tener varios párrafos. */
+export interface PreguntaFrecuente {
+  pregunta: string;
+  respuesta: string[];
+}
+
+/** Página de preguntas frecuentes de un servicio. */
+export interface PreguntasFrecuentes {
+  /** Título de la portada; abajo va el del servicio, en verde. */
+  titulo: string;
+  resumen: string;
+  /** Para buscadores y redes: la bajada de la portada dice poco fuera de contexto. */
+  descripcion: string;
+  preguntas: PreguntaFrecuente[];
 }

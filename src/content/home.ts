@@ -45,13 +45,17 @@ export interface HomeContent {
     eyebrow: string;
     title: string;
     body: string;
+    /** Foto de desktop; tablet y mobile tienen la suya, con el logo reubicado. */
     image: SiteImage;
+    imageTablet: SiteImage;
+    imageMobile: SiteImage;
     cta: { label: string; href: string };
     /**
-     * Línea de servicios entre el párrafo y el botón. Lleva sus propios
-     * nombres: en Framer son más largos que los del nav.
+     * Servicios entre el párrafo y el botón. Llevan sus propios nombres: en
+     * Framer son más largos que los del nav, salvo en tablet en español, donde
+     * usa los cortos (`shortLabel`). En inglés son los mismos.
      */
-    services: readonly NavLink[];
+    services: readonly (NavLink & { shortLabel: string })[];
   };
   record: {
     title: string;
@@ -73,12 +77,22 @@ const es: HomeContent = {
     title: "Ingeniería para mantener la industria en movimiento.",
     body: "Soluciones especializadas para intervenir, mantener y optimizar instalaciones industriales, reduciendo interrupciones y asegurando la continuidad de las operaciones.",
     image: images.es.hero,
+    imageTablet: images.es.heroTablet,
+    imageMobile: images.es.heroMobile,
     cta: { label: "Contactanos", href: sectionHref("es", sectionIds.enquiry) },
     services: [
-      { label: "Sellado de Fugas en operación", href: "/sellado-de-fuga" },
+      {
+        label: "Sellado de Fugas en operación",
+        shortLabel: "Sellado de Fuga",
+        href: "/sellado-de-fuga",
+      },
       // Framer dice "en situ"; la página de calibración usa "in situ".
-      { label: "Calibración de válvulas in situ", href: "/calibracion-de-valvulas" },
-      { label: "X-Pando", href: "/x-pando" },
+      {
+        label: "Calibración de válvulas in situ",
+        shortLabel: "Calibración de válvulas",
+        href: "/calibracion-de-valvulas",
+      },
+      { label: "X-Pando", shortLabel: "X-Pando", href: "/x-pando" },
     ],
   },
 
@@ -195,14 +209,25 @@ const en: HomeContent = {
     title: "Engineering to keep industry moving.",
     body: "Specialized solutions for intervening in, maintaining, and optimizing industrial facilities, reducing downtime and ensuring operational continuity.",
     image: images.en.hero,
+    imageTablet: images.en.heroTablet,
+    imageMobile: images.en.heroMobile,
     cta: { label: "Contact Us", href: sectionHref("en", sectionIds.enquiry) },
     services: [
-      { label: "On-site leak sealing", href: localizePath("en", "/sellado-de-fuga") },
+      {
+        label: "On-site leak sealing",
+        shortLabel: "On-site leak sealing",
+        href: localizePath("en", "/sellado-de-fuga"),
+      },
       {
         label: "Safety valve calibration",
+        shortLabel: "Safety valve calibration",
         href: localizePath("en", "/calibracion-de-valvulas"),
       },
-      { label: "X-Pando", href: localizePath("en", "/x-pando") },
+      {
+        label: "X-Pando",
+        shortLabel: "X-Pando",
+        href: localizePath("en", "/x-pando"),
+      },
     ],
   },
 

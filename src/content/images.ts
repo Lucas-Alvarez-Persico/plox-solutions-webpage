@@ -1,6 +1,8 @@
 import type { StaticImageData } from "next/image";
 
 import heroPhoto from "@/assets/images/hero.jpg";
+import heroPhotoMobile from "@/assets/images/hero-mobile.jpg";
+import heroPhotoTablet from "@/assets/images/hero-tablet.jpg";
 import miniaturaSellado from "@/assets/images/miniatura-sellado.jpg";
 import miniaturaValvulas from "@/assets/images/miniatura-valvulas.jpg";
 import miniaturaXpando from "@/assets/images/miniatura-xpando.jpg";
@@ -28,10 +30,14 @@ export interface SiteImage {
 
 const files = {
   logo,
-  // El del nav es el mismo logo recortado al ras, sin el margen transparente
-  // que conserva el del footer: así lo entregó Framer para cada lugar.
+  // El del nav viene casi al ras, sin el margen transparente que conserva el
+  // del footer, y con "solutions" en un trazo más grueso: así lo entregó
+  // Framer para cada lugar.
   logoNav,
+  // Framer usa una foto por breakpoint, cada una con el logo ubicado distinto.
   hero: heroPhoto,
+  heroTablet: heroPhotoTablet,
+  heroMobile: heroPhotoMobile,
   servicioSellado,
   servicioValvulas,
   servicioXpando,

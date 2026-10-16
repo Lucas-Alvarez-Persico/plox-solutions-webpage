@@ -69,9 +69,8 @@ export const serviceLinks: Localized<NavLink[]> = {
     { label: "Calibración de Válvulas", href: "/calibracion-de-valvulas" },
     { label: "X-Pando", href: "/x-pando" },
   ],
-  // En el desplegable de Framer en inglés los nombres quedaron en español.
   en: [
-    { label: "Online Leak Sealing", href: "/en/sellado-de-fuga" },
+    { label: "On-site Leak Sealing", href: "/en/sellado-de-fuga" },
     { label: "Safety Valve Calibration", href: "/en/calibracion-de-valvulas" },
     { label: "X-Pando", href: "/en/x-pando" },
   ],
