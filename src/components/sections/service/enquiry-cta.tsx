@@ -1,6 +1,6 @@
 import { ButtonPrimary } from "@/components/button";
 import { AccionesServicio } from "@/components/sections/service/acciones-servicio";
-import { sectionHref, sectionIds, siteContent } from "@/content/site";
+import { sectionHref, siteContent } from "@/content/site";
 import type { Servicio } from "@/content/servicios/tipos";
 import type { Locale } from "@/lib/i18n";
 
@@ -36,7 +36,7 @@ export function EnquiryCta({
 
         <div className="flex flex-col items-start gap-5 tablet:flex-row tablet:flex-wrap tablet:gap-8">
           <AccionesServicio acciones={descargas} />
-          <ButtonPrimary href={sectionHref(locale, sectionIds.enquiry)}>
+          <ButtonPrimary href={sectionHref(locale, "enquiry")}>
             {siteContent[locale].ui.contactCta}
           </ButtonPrimary>
           <AccionesServicio acciones={externos} />

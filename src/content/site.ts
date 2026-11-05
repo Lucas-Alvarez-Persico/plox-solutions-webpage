@@ -5,18 +5,26 @@
 import { localizePath, type Locale, type Localized } from "@/lib/i18n";
 
 /**
- * Ids de las secciones de la home, tal como los usa el diseño original.
- *
- * Los enlaces que apuntan a ellas se escriben como `/#id`, no como `#id`: el
- * nav y el footer también se muestran en las páginas de servicio, donde esas
- * secciones no existen y un ancla suelta no llevaría a ningún lado.
+ * Ids de las secciones de la home en cada idioma. Los enlaces del sitio no los
+ * usan (van a la ruta de la sección, ver `sectionPaths`), pero siguen sirviendo
+ * de ancla: `/#contacto` también funciona.
  */
 export const sectionIds = {
-  hero: "a-01-hero",
-  record: "a-02-record",
-  method: "a-05-method",
-  enquiry: "a-10-enquiry",
-} as const;
+  es: {
+    hero: "inicio",
+    record: "nosotros",
+    method: "servicios",
+    enquiry: "contacto",
+  },
+  en: {
+    hero: "home",
+    record: "about-us",
+    method: "services",
+    enquiry: "contact",
+  },
+} as const satisfies Localized<Record<string, string>>;
+
+export type SectionKey = keyof (typeof sectionIds)["es"];
 
 export interface NavLink {
   label: string;
@@ -50,9 +58,34 @@ export interface SiteContent {
   ui: UiStrings;
 }
 
+/**
+ * Ruta de cada sección de la home, en español; `localizePath` la traduce
+ * (`/contacto` ↔ `/en/contact`). Cada una es una página que muestra la home y
+ * baja sola hasta la sección, así se puede compartir el enlace sin `#`. El
+ * inicio es la home misma.
+ */
+const sectionPaths: Record<SectionKey, string> = {
+  hero: "/",
+  record: "/nosotros",
+  method: "/servicios",
+  enquiry: "/contacto",
+};
+
 /** Enlace a una sección de la home, en el idioma de la página. */
-export function sectionHref(locale: Locale, id: string) {
-  return localizePath(locale, `/#${id}`);
+export function sectionHref(locale: Locale, section: SectionKey) {
+  return localizePath(locale, sectionPaths[section]);
+}
+
+/**
+ * Atributos del `<section>` de cada sección de la home: el id y su ruta. Con
+ * la ruta, `AnchorScroll` reconoce los enlaces a una sección que ya está en
+ * pantalla y scrollea hasta ella en vez de cargar otra página.
+ */
+export function sectionAttributes(locale: Locale, section: SectionKey) {
+  return {
+    id: sectionIds[locale][section],
+    "data-section-path": sectionHref(locale, section),
+  };
 }
 
 /**
@@ -96,30 +129,30 @@ function socialLinks(): NavLink[] {
 export const siteContent: Localized<SiteContent> = {
   es: {
     navLinks: [
-      { label: "Inicio", href: sectionHref("es", sectionIds.hero) },
-      { label: "Nosotros", href: sectionHref("es", sectionIds.record) },
+      { label: "Inicio", href: sectionHref("es", "hero") },
+      { label: "Nosotros", href: sectionHref("es", "record") },
       {
         label: "Servicios",
-        href: sectionHref("es", sectionIds.method),
+        href: sectionHref("es", "method"),
         children: serviceLinks.es,
       },
-      { label: "Contacto", href: sectionHref("es", sectionIds.enquiry) },
+      { label: "Contacto", href: sectionHref("es", "enquiry") },
     ],
     navCta: {
       label: "Contactanos",
-      href: sectionHref("es", sectionIds.enquiry),
+      href: sectionHref("es", "enquiry"),
     },
     footerColumns: [
       {
         heading: "Sitio",
         links: [
-          { label: "Inicio", href: sectionHref("es", sectionIds.hero) },
+          { label: "Inicio", href: sectionHref("es", "hero") },
           {
             label: "Sobre Nosotros",
-            href: sectionHref("es", sectionIds.record),
+            href: sectionHref("es", "record"),
           },
-          { label: "Servicios", href: sectionHref("es", sectionIds.method) },
-          { label: "Contacto", href: sectionHref("es", sectionIds.enquiry) },
+          { label: "Servicios", href: sectionHref("es", "method") },
+          { label: "Contacto", href: sectionHref("es", "enquiry") },
         ],
       },
       { heading: "Servicios", links: serviceLinks.es },
@@ -140,27 +173,27 @@ export const siteContent: Localized<SiteContent> = {
 
   en: {
     navLinks: [
-      { label: "Home", href: sectionHref("en", sectionIds.hero) },
-      { label: "About Us", href: sectionHref("en", sectionIds.record) },
+      { label: "Home", href: sectionHref("en", "hero") },
+      { label: "About Us", href: sectionHref("en", "record") },
       {
         label: "Services",
-        href: sectionHref("en", sectionIds.method),
+        href: sectionHref("en", "method"),
         children: serviceLinks.en,
       },
-      { label: "Contact Us", href: sectionHref("en", sectionIds.enquiry) },
+      { label: "Contact Us", href: sectionHref("en", "enquiry") },
     ],
     navCta: {
       label: "Contact Us",
-      href: sectionHref("en", sectionIds.enquiry),
+      href: sectionHref("en", "enquiry"),
     },
     footerColumns: [
       {
         heading: "Site",
         links: [
-          { label: "Home", href: sectionHref("en", sectionIds.hero) },
-          { label: "About Us", href: sectionHref("en", sectionIds.record) },
-          { label: "Services", href: sectionHref("en", sectionIds.method) },
-          { label: "Contact Us", href: sectionHref("en", sectionIds.enquiry) },
+          { label: "Home", href: sectionHref("en", "hero") },
+          { label: "About Us", href: sectionHref("en", "record") },
+          { label: "Services", href: sectionHref("en", "method") },
+          { label: "Contact Us", href: sectionHref("en", "enquiry") },
         ],
       },
       { heading: "Services", links: serviceLinks.en },

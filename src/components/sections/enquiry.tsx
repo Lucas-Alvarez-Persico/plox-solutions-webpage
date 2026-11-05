@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 
 import type { EnquiryContent } from "@/content/home";
-import { sectionIds } from "@/content/site";
+import { sectionAttributes } from "@/content/site";
 import type { Locale } from "@/lib/i18n";
 
 type Status = "idle" | "sending" | "success" | "error" | "notConfigured";
@@ -86,7 +86,7 @@ export function Enquiry({
 
   return (
     <section
-      id={sectionIds.enquiry}
+      {...sectionAttributes(locale, "enquiry")}
       className="section-x scroll-mt-18 bg-ink py-16 tablet:py-24 desktop:py-40"
     >
       <div className="container-site flex flex-col gap-16">

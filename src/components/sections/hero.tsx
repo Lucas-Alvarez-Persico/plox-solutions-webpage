@@ -4,7 +4,8 @@ import Link from "next/link";
 import { ButtonPrimary } from "@/components/button";
 import type { HomeContent } from "@/content/home";
 import type { SiteImage } from "@/content/images";
-import { sectionIds } from "@/content/site";
+import { sectionAttributes } from "@/content/site";
+import type { Locale } from "@/lib/i18n";
 
 /** Degradado que oscurece la foto para que el texto tenga contraste. */
 const SCRIM =
@@ -46,12 +47,18 @@ function HeroPhoto({ hero }: { hero: HomeContent["hero"] }) {
   );
 }
 
-export function Hero({ content: hero }: { content: HomeContent["hero"] }) {
+export function Hero({
+  content: hero,
+  locale,
+}: {
+  content: HomeContent["hero"];
+  locale: Locale;
+}) {
   return (
     // En desktop, Framer deja 206px de padding inferior para que se vea la
     // marca de agua del logo, que viene impresa en la foto, debajo del texto.
     <section
-      id={sectionIds.hero}
+      {...sectionAttributes(locale, "hero")}
       className="section-x relative flex min-h-[88vh] scroll-mt-18 flex-col overflow-clip bg-bone pt-25 pb-8 tablet:min-h-[94vh] tablet:pt-[62px] tablet:pb-10 desktop:pt-[57px] desktop:pb-[206px]"
     >
       <div className="hero-photo absolute inset-0">

@@ -4,7 +4,8 @@ import { ServicePanel } from "@/components/sections/service-panel";
 import { StageList } from "@/components/sections/stage-list";
 import type { HomeContent } from "@/content/home";
 import { images } from "@/content/images";
-import { sectionIds } from "@/content/site";
+import { sectionAttributes } from "@/content/site";
+import type { Locale } from "@/lib/i18n";
 
 /**
  * A-05 · Method — el bloque de servicios. Se arma en dos columnas: a la
@@ -14,12 +15,14 @@ import { sectionIds } from "@/content/site";
  */
 export function Method({
   content: method,
+  locale,
 }: {
   content: HomeContent["method"];
+  locale: Locale;
 }) {
   return (
     <section
-      id={sectionIds.method}
+      {...sectionAttributes(locale, "method")}
       className="section-x relative scroll-mt-18 overflow-clip bg-bone py-16 tablet:py-24 desktop:py-40"
     >
       <Image

@@ -8,12 +8,7 @@ import { useEffect, useState } from "react";
 import { ButtonPrimary } from "@/components/button";
 import { LanguageMenu } from "@/components/language-menu";
 import { images } from "@/content/images";
-import {
-  sectionHref,
-  sectionIds,
-  siteContent,
-  type NavLink,
-} from "@/content/site";
+import { sectionHref, siteContent, type NavLink } from "@/content/site";
 import type { Locale } from "@/lib/i18n";
 
 /**
@@ -58,7 +53,7 @@ export function SiteNav({ locale }: { locale: Locale }) {
       >
         <div className="container-site flex items-center justify-between">
           <Link
-            href={sectionHref(locale, sectionIds.hero)}
+            href={sectionHref(locale, "hero")}
             className="flex items-center"
             aria-label={`${logo.alt} — ${ui.goHome}`}
           >

@@ -2,7 +2,7 @@ import { localizePath, type Localized } from "@/lib/i18n";
 import { images, type SiteImage } from "./images";
 import type { AccionServicio } from "./servicios/tipos";
 import { xPando } from "./servicios/x-pando";
-import { type NavLink, sectionHref, sectionIds } from "./site";
+import { type NavLink, sectionHref } from "./site";
 
 export interface Service {
   code: string;
@@ -79,7 +79,7 @@ const es: HomeContent = {
     image: images.es.hero,
     imageTablet: images.es.heroTablet,
     imageMobile: images.es.heroMobile,
-    cta: { label: "Contactanos", href: sectionHref("es", sectionIds.enquiry) },
+    cta: { label: "Contactanos", href: sectionHref("es", "enquiry") },
     services: [
       {
         label: "Sellado de Fugas en operación",
@@ -211,7 +211,7 @@ const en: HomeContent = {
     image: images.en.hero,
     imageTablet: images.en.heroTablet,
     imageMobile: images.en.heroMobile,
-    cta: { label: "Contact Us", href: sectionHref("en", sectionIds.enquiry) },
+    cta: { label: "Contact Us", href: sectionHref("en", "enquiry") },
     services: [
       {
         label: "On-site leak sealing",

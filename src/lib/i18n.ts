@@ -40,6 +40,9 @@ const translatedPaths: Partial<Localized<Record<string, string>>> = {
     "/sellado-de-fuga": "/leak-sealing",
     "/calibracion-de-valvulas": "/valve-calibration",
     "/x-pando/preguntas-frecuentes": "/x-pando/faq",
+    "/nosotros": "/about-us",
+    "/servicios": "/services",
+    "/contacto": "/contact",
   },
 };
 
