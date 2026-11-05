@@ -15,6 +15,11 @@ const SCRIM =
  * otra posición. Con `<picture>` el navegador baja solo la que corresponde.
  * Va `eager` en vez de `preload` porque el preload no sabe elegir entre las
  * tres y terminaría bajando la de desktop también en el celular.
+ *
+ * El logo está cerca del borde inferior y hacia la derecha en las tres fotos,
+ * así que se ancla ahí (65% 100%): cuando la sección es más ancha que la foto
+ * se recorta el techo, y cuando es más alta se recorta sobre todo la izquierda.
+ * Centrada, en pantallas anchas el recorte se comía la parte de abajo del logo.
  */
 function HeroPhoto({ hero }: { hero: HomeContent["hero"] }) {
   // Con `images.unoptimized` no hay `srcSet`: queda solo la URL del archivo.
@@ -35,7 +40,7 @@ function HeroPhoto({ hero }: { hero: HomeContent["hero"] }) {
         alt={hero.image.alt}
         loading="eager"
         fetchPriority="high"
-        className="absolute inset-0 size-full object-cover object-center"
+        className="absolute inset-0 size-full object-cover object-[65%_100%]"
       />
     </picture>
   );
