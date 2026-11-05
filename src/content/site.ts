@@ -70,9 +70,15 @@ export const serviceLinks: Localized<NavLink[]> = {
     { label: "X-Pando", href: "/x-pando" },
   ],
   en: [
-    { label: "On-site Leak Sealing", href: "/en/sellado-de-fuga" },
-    { label: "Safety Valve Calibration", href: "/en/calibracion-de-valvulas" },
-    { label: "X-Pando", href: "/en/x-pando" },
+    {
+      label: "On-site Leak Sealing",
+      href: localizePath("en", "/sellado-de-fuga"),
+    },
+    {
+      label: "Safety Valve Calibration",
+      href: localizePath("en", "/calibracion-de-valvulas"),
+    },
+    { label: "X-Pando", href: localizePath("en", "/x-pando") },
   ],
 };
 

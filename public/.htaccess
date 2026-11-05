@@ -14,6 +14,11 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+  # Las páginas en inglés antes usaban la ruta en español. Se redirigen a la
+  # ruta traducida para no romper enlaces viejos ni lo que ya indexó Google.
+  RewriteRule ^en/sellado-de-fuga/?$ /en/leak-sealing/ [R=301,L]
+  RewriteRule ^en/calibracion-de-valvulas/?$ /en/valve-calibration/ [R=301,L]
+
   # El styleguide es solo para desarrollo: en producción, 404 de verdad.
   RewriteRule ^styleguide(/|$) - [R=404,L]
 </IfModule>

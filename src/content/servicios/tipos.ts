@@ -33,6 +33,10 @@ export type AccionServicio =
 
 /** Contenido de una página de servicio. */
 export interface Servicio {
+  /**
+   * Ruta de la página en español, sin la barra inicial. Es la misma en todos
+   * los idiomas: la URL de cada uno sale de `localizePath`.
+   */
   slug: string;
   /** Nombre corto, para el navegador entre servicios. */
   nombreCorto: string;

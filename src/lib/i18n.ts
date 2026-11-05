@@ -1,7 +1,10 @@
 /**
  * Idiomas del sitio. El español es el idioma principal y va sin prefijo en la
- * URL; el inglés vive bajo `/en`. Las rutas son las mismas en los dos idiomas
- * (`/sellado-de-fuga` ↔ `/en/sellado-de-fuga`), igual que en Framer.
+ * URL; el inglés vive bajo `/en`.
+ *
+ * En el código, cada página se identifica por su ruta en español; las rutas de
+ * los otros idiomas salen de `localizePath`, que además traduce las que tienen
+ * nombre propio en ese idioma (`/sellado-de-fuga` ↔ `/en/leak-sealing`).
  */
 export const locales = ["es", "en"] as const;
 
@@ -25,26 +28,61 @@ export const ogLocales: Localized<string> = {
 };
 
 /**
+ * Rutas traducidas, de la ruta en español a la de cada idioma (sin el prefijo
+ * del idioma). Las que no figuran se usan tal cual, como `/x-pando`, que es el
+ * nombre del producto.
+ *
+ * Al cambiar una ruta acá también hay que renombrar su carpeta en `src/app/en`
+ * y agregar la redirección desde la ruta vieja en `public/.htaccess`.
+ */
+const translatedPaths: Partial<Localized<Record<string, string>>> = {
+  en: {
+    "/sellado-de-fuga": "/leak-sealing",
+    "/calibracion-de-valvulas": "/valve-calibration",
+    "/x-pando/preguntas-frecuentes": "/x-pando/faq",
+  },
+};
+
+/** Separa la ruta del ancla y le saca la barra final que agrega el export. */
+function splitPath(path: string) {
+  const hashIndex = path.indexOf("#");
+  const pathname = hashIndex === -1 ? path : path.slice(0, hashIndex);
+  const hash = hashIndex === -1 ? "" : path.slice(hashIndex);
+  const trimmed = pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
+  return { pathname: trimmed, hash };
+}
+
+/**
  * Ruta de una página en el idioma pedido, a partir de su ruta en español.
  * Acepta anclas: `/#contacto` pasa a `/en#contacto`.
  */
 export function localizePath(locale: Locale, path: string) {
   if (locale === defaultLocale) return path;
-  if (path === "/") return `/${locale}`;
-  if (path.startsWith("/#")) return `/${locale}${path.slice(1)}`;
-  return `/${locale}${path}`;
+
+  const { pathname, hash } = splitPath(path);
+  if (pathname === "/") return `/${locale}${hash}`;
+
+  const translated = translatedPaths[locale]?.[pathname] ?? pathname;
+  return `/${locale}${translated}${hash}`;
 }
 
 /** Inversa de `localizePath`: la ruta en español de cualquier página. */
-export function delocalizePath(pathname: string) {
+export function delocalizePath(path: string) {
+  const { pathname, hash } = splitPath(path);
+
   for (const locale of locales) {
     if (locale === defaultLocale) continue;
-    if (pathname === `/${locale}`) return "/";
-    if (pathname.startsWith(`/${locale}/`)) {
-      return pathname.slice(locale.length + 1);
-    }
+    if (pathname === `/${locale}`) return `/${hash}`;
+    if (!pathname.startsWith(`/${locale}/`)) continue;
+
+    const localized = pathname.slice(locale.length + 1);
+    const original = Object.entries(translatedPaths[locale] ?? {}).find(
+      ([, translated]) => translated === localized,
+    )?.[0];
+    return `${original ?? localized}${hash}`;
   }
-  return pathname;
+
+  return path;
 }
 
 /**
